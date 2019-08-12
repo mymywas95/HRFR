@@ -1,0 +1,57 @@
+<div id="layout-topbar">
+    <a class="logo" [routerLink]="['/']">
+        HRFL
+    </a>
+    <a href="#" class="menu-button" (click)="onMenuButtonClick($event)">
+        <i class="fa fa-bars"></i>
+    </a>
+    <ul class="topbar-menu">
+        <li>
+            <a href="#">
+                <span class="username">Emma Davis</span>
+                <img src="../../../../assets/showcase/images/person-svg-anonymous-6.png">
+                <i class="fa fa-angle-down"></i></a>
+        </li>
+    </ul>
+</div>
+
+<div id="layout-sidebar" [ngClass]="{'active': menuActive}">
+    <div class="layout-menu">
+        <a>
+            <i class="menu-icon fa fa-fw fa-home"></i>
+            <span>Dashboard</span>
+        </a>
+        <a>
+            <i class="menu-icon fa fa-fw fa-home"></i>
+            <span>Dashboard</span>
+        </a>
+        <a>
+            <i class="menu-icon fa fa-fw fa-home"></i>
+            <span>Dashboard</span>
+        </a>
+        <a>
+            <i class="menu-icon fa fa-fw fa-home"></i>
+            <span>Dashboard</span>
+        </a>
+        <a>
+            <i class="menu-icon fa fa-fw fa-home"></i>
+            <span>Dashboard</span>
+        </a>
+        <a>
+            <i class="menu-icon fa fa-fw fa-home"></i>
+            <span>Dashboard</span>
+        </a>
+        <a>
+            <i class="menu-icon fa fa-fw fa-home"></i>
+            <span>Dashboard</span>
+        </a>
+        <a>
+            <i class="menu-icon fa fa-fw fa-home"></i>
+            <span>Dashboard</span>
+        </a>
+
+    </div>
+</div>
+
+<div class="layout-mask" *ngIf="menuActive">
+</div>
