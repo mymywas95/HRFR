@@ -20,3 +20,13 @@ img {
   display: inline;
   font-size: 1.4em;
 }
+
+@font-face {
+  font-family: blacklisted;
+  src: url(../../../../assets/showcase/fonts/Blacklisted.ttf);
+}
+
+.logo {
+  font-family: blacklisted;
+  font-size: 25px;
+}

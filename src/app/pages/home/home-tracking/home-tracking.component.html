@@ -1,0 +1,88 @@
+<div class="dashboard">
+    <div class="ui-g-12 ui-md-6 ui-lg-3">
+        <div class="ui-g card overview-box overview-box-1 no-gutter">
+            <div class="overview-box-title">Số phòng trọ chưa thu tiền</div>
+            <div class="overview-box-details">
+                <i class="fa fa-money overview-box-details-icon"></i>
+                <span class="overview-box-details-count">150</span></div>
+            <div class="overview-box-stats" style="color:#3fb839"><i
+                    class="fa fa-caret-up overview-box-details-icon"></i>
+                %50
+            </div>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-3 dashboard">
+        <div class="ui-g card overview-box overview-box-1 no-gutter">
+            <div class="overview-box-title">Số phòng trọ sắp thu tiền</div>
+            <div class="overview-box-details">
+                <i class="fa fa-money overview-box-details-icon"></i>
+                <span class="overview-box-details-count">150</span></div>
+            <div class="overview-box-stats" style="color:#3fb839"><i
+                    class="fa fa-caret-up overview-box-details-icon"></i>
+                %50
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-lg-3 dashboard">
+        <div class="ui-g card overview-box overview-box-1 no-gutter">
+            <div class="overview-box-title">Số nhà nguyên căn chưa thu tiền</div>
+            <div class="overview-box-details">
+                <i class="fa fa-money overview-box-details-icon"></i>
+                <span class="overview-box-details-count">150</span></div>
+            <div class="overview-box-stats" style="color:#3fb839"><i
+                    class="fa fa-caret-up overview-box-details-icon"></i>
+                %50
+            </div>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-3 dashboard">
+        <div class="ui-g card overview-box overview-box-1 no-gutter">
+            <div class="overview-box-title">Số nhà nguyên căn săp thu tiền</div>
+            <div class="overview-box-details">
+                <i class="fa fa-money overview-box-details-icon"></i>
+                <span class="overview-box-details-count">150</span></div>
+            <div class="overview-box-stats" style="color:#3fb839"><i
+                    class="fa fa-caret-up overview-box-details-icon"></i>
+                %50
+            </div>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-lg-4 contacts">
+        <p-panel header="Thanh toán gần đây">
+            <ul>
+                <li *ngFor="let number of [0,1,2,3,4]" class="clearfix">
+                    <div class="contact-info">
+                        <span class="name">Samantha Owens (me)</span>
+                        <span class="location">0349511771</span>
+                    </div>
+                    <div class="contact-actions">
+                        <span class="connection-status">100$</span>
+                        <span class="connection-status">19/09/2019</span>
+                    </div>
+                </li>
+            </ul>
+        </p-panel>
+    </div>
+    <div class="ui-g-12 ui-lg-4 contacts">
+        <p-panel header="Nợ lâu ngày">
+            <ul>
+                <li *ngFor="let number of [0,1,2,3,4]" class="clearfix">
+                    <div class="contact-info">
+                        <span class="name">Samantha Owens (me)</span>
+                        <span class="location">0349511771</span>
+                    </div>
+                    <div class="contact-actions">
+                        <span class="connection-status">100$</span>
+                        <span class="connection-status">20 ngày</span>
+                    </div>
+                </li>
+            </ul>
+        </p-panel>
+    </div>
+    <div class="ui-g-12 ui-lg-4 contacts">
+        <p-panel header="Thống kê thu chi">
+            <p-chart type="line" [data]="data"></p-chart>
+        </p-panel>
+    </div>
+</div>

@@ -14,6 +14,7 @@ body {
     color: #333c40;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
+    background: #F2F8FA;
 }
 
 #layout-topbar {
@@ -52,7 +53,7 @@ body {
 }
 
 #layout-topbar .logo {
-    margin-left: 45px;
+    margin-left: 25px;
     margin-top: 15px;
     display: inline-block;
 }
@@ -65,7 +66,7 @@ body {
     display: inline-block;
     list-style-type: none;
     float: right;
-    margin: 0 60px 0 0;
+    margin: 0 10px 0 0;
     padding: 0;
     height: 100%;
 }
@@ -399,8 +400,7 @@ body {
 
 #layout-content {
     margin-left: 300px;
-    padding-top: 70px;
-    background-color: #ffffff;
+    padding-top: 50px;
 }
 
 .layout-mask {
