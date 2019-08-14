@@ -12,8 +12,8 @@
   },
   "postinstall": "ng build --aot -prod",
   "engines": {
-    "node": "6.11.0",
-    "npm": "3.10.10"
+    "node": "10.16.1",
+    "npm": "6.9.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.800.0",
