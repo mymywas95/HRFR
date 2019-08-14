@@ -1,0 +1,26 @@
+
+<div class="ui-g">
+    <div class="ui-g-12 ui-md-4 ui-lg-3" *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10]">
+        <div class="item-block" (click)="showDetail(number)">
+            <div class="img-block">
+                <div class="img-item">
+                    <img src="../../../../assets/showcase/images/house.jpg">
+                </div>
+            </div>
+            <div class="item-detail-block">
+                <div class="name">
+                    Phòng số 1
+                </div>
+                <div class="description room-count">
+                    200$/5 người
+                </div>
+                <div class="description room-address">
+                    đã thanh toán
+                </div>
+            </div>
+            <div class="item-detail-action">
+                <div>Xem chi tiết</div>
+            </div>
+        </div>
+    </div>
+</div>

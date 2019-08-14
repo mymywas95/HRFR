@@ -1,0 +1,28 @@
+<div class="ui-g">
+    <div class="ui-g-12 ui-md-6 ui-lg-6 page-title">
+        Quản lý phòng và nhà cho thuê
+    </div>
+    <div class="ui-g-12 ui-md-6 ui-lg-6 page-action">
+        <button *ngIf="isDetail" pButton label="Quay lại" (click)="back()"></button>
+        <button *ngIf="isDetail" pButton label="Ngưng hoạt động"></button>
+        <button pButton label="Tạo mới"></button>
+    </div>
+</div>
+<hr>
+<div class="page-content">
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-2 ui-lg-2 ui-noPadLef">
+            <p-dropdown [options]="roomTypeList" [(ngModel)]="roomTypeSelected"></p-dropdown>
+        </div>
+        <div class="ui-g-12 ui-md-2 ui-lg-2" *ngIf="roomTypeSelected === 'room'">
+            <p-dropdown [options]="roomList" [(ngModel)]="roomSelected"></p-dropdown>
+        </div>
+    </div>
+    <p-panel [header]="initHeader()" [ngClass]="{'detail': isDetail}">
+        <div class="content-panel-block">
+            <was-room-item *ngIf="!isDetail" (showDetailEvent)="showDetail($event)"></was-room-item>
+            <was-room-detail  *ngIf="isDetail"></was-room-detail>
+        </div>
+    </p-panel>
+</div>
+

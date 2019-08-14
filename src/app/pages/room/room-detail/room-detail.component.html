@@ -1,0 +1,166 @@
+<div class="ui-g">
+    <div class="ui-g-12 ui-md-9 ui-lg-9">
+        <div class="card card-w-title">
+            <h1>Thông tin phòng</h1>
+            <div class="ui-g form-group">
+                <div class="ui-g-12 ui-md-4 ui-lg-4">
+                    <div class="label">
+                        <label>Tiền phòng</label>
+                    </div>
+                    <div class="input">
+                        <input pInputText>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4 ui-lg-4">
+                    <div class="label">
+                        <label>Tiền điện</label>
+                    </div>
+                    <div class="input">
+                        <input pInputText>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4 ui-lg-4">
+                    <div class="label">
+                        <label>Tiền nước</label>
+                    </div>
+                    <div class="input">
+                        <input pInputText>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4 ui-lg-4">
+                    <div class="label">
+                        <label>Tiền nước</label>
+                    </div>
+                    <div class="input">
+                        <input pInputText>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4 ui-lg-4">
+                    <div class="label">
+                        <label>Tiền gửi xe</label>
+                    </div>
+                    <div class="input">
+                        <input pInputText>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4 ui-lg-4">
+                    <div class="label">
+                        <label>Tiền rác</label>
+                    </div>
+                    <div class="input">
+                        <input pInputText>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4 ui-lg-4">
+                    <div class="label">
+                        <label>Số diện cũ</label>
+                    </div>
+                    <div class="input">
+                        <input pInputText>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4 ui-lg-4">
+                    <div class="label">
+                        <label>Số diện hiện tại</label>
+                    </div>
+                    <div class="input">
+                        <input pInputText>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4 ui-lg-4">
+                    <div class="label">
+                        <label>Số nước cũ</label>
+                    </div>
+                    <div class="input">
+                        <input pInputText>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4 ui-lg-4">
+                    <div class="label">
+                        <label>Số nước hiện tại</label>
+                    </div>
+                    <div class="input">
+                        <input pInputText>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4 ui-lg-4">
+                    <div class="label">
+                        <label>Ngày kết thúc hợp đồng</label>
+                    </div>
+                    <div class="input">
+                        <input pInputText>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-3 ui-lg-3">
+        <div class="card card-w-title">
+            <h1>Tình trạng phòng</h1>
+            <div class="ui-g form-group">
+                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                   <ul class="none-pay-list">
+                       <li>7/2019</li>
+                       <li><button pButton label="Chưa thanh toán"></button></li>
+                   </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-12 ui-lg-12 ui-noPadBot ui-noPadTop">
+        <div class="card card-w-title ui-noMarBot ui-noPadTop ui-pad-bot-5">
+            <h1>Thông tin khách trọ</h1>
+            <p-table [value]="cars" [scrollable]="true" scrollHeight="18vh">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th class="ng-star-inserted">STT</th>
+                        <th *ngFor="let col of cols">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-car let-index="rowIndex">
+                    <tr>
+                        <td class="text-center">{{index + 1}}</td>
+                        <td *ngFor="let col of cols">
+                            {{car[col.field]}}
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

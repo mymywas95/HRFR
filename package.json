@@ -4,15 +4,17 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/primefaces/primeng.git"
+  "heroku-postbuild": "ng build --prod",
+  "postinstall": "ng build --aot -prod",
+  "engines": {
+    "node": "6.11.0",
+    "npm": "3.10.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.800.0",
@@ -32,12 +34,13 @@
     "@fullcalendar/daygrid": "4.1.0",
     "@fullcalendar/interaction": "4.1.0",
     "@fullcalendar/timegrid": "4.1.0",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "chart.js": "2.7.3",
     "codelyzer": "^5.0.0",
     "del": "^2.2.0",
+    "enhanced-resolve": "^3.3.0",
     "font-awesome": "4.7.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
@@ -64,5 +67,9 @@
     "typescript": "~3.4.3",
     "web-animations-js": "angular/web-animations-js#release_pr208",
     "zone.js": "~0.9.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
   }
 }

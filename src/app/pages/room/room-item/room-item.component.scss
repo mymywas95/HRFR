@@ -1,0 +1,53 @@
+@import "../../../../assets/showcase/styles/mixin";
+
+.img-block {
+  @include ratio-wrappter(16, 9);
+}
+
+.item-block {
+  border: 1px solid #cccccc;
+  padding: 5px;
+  border-radius: 3px;
+  position: relative;
+}
+
+.item-detail-block {
+  .name {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 5px 0px;
+  }
+
+  .description {
+    font-size: 12px;
+
+  }
+}
+
+.item-detail-action {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(57, 132, 184, 0.3);
+  display: none;
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 18px;
+
+  > div {
+    position: relative;
+    float: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.item-block:hover {
+  cursor: pointer;
+  .item-detail-action {
+    display: block;
+  }
+}
