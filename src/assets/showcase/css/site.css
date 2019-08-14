@@ -3,18 +3,42 @@ html {
   height: 100%;
 }
 
+@font-face {
+    font-family: "ArimaMaduraiRegular";
+    src: url(../../showcase/fonts/YanoneKaffeesatz-Light.ttf);
+}
+
+@font-face {
+    font-family: "ArimaMaduraiRegular";
+    src: url(../../showcase/fonts/YanoneKaffeesatz-Regular.ttf);
+    font-weight: bold;
+}
+
 body {
     margin: 0px;
     min-height: 100%;
     padding: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: "ArimaMaduraiRegular", "Open Sans", "Helvetica Neue", sans-serif!important;
     font-weight: normal;
     color: #333c40;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    background: #F2F8FA;
+    background: #EEF2F6;
+}
+
+body .ui-widget {
+    font-family: "ArimaMaduraiRegular", "Open Sans", "Helvetica Neue", sans-serif!important;
+}
+
+hr {
+    margin: 0;
+}
+
+body a {
+    color: #3984b8;
+    text-decoration: none;
 }
 
 #layout-topbar {
@@ -1214,4 +1238,40 @@ a {
   .notification-topbar .notification-topbar-image-mobile {
     display: block;
   }
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+.page-action {
+    text-align: right;
+}
+
+.page-content {
+    padding: 5px;
+}
+
+.ui-noPadLef {
+    padding-left: 0!important;;
+}
+
+.ui-noPadBot {
+    padding-bottom: 0!important;;
+}
+
+.ui-noPadTop {
+    padding-top: 0!important;
+}
+
+.ui-noMarBot {
+    margin-bottom: 0!important;;
+}
+
+.ui-pad-bot-5 {
+    padding-bottom: 5px!important;;
+}
+
+.text-center {
+    text-align: center;
 }

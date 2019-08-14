@@ -17,13 +17,13 @@
 
 <div id="layout-sidebar" [ngClass]="{'active': menuActive}">
     <div class="layout-menu">
-        <a>
+        <a [routerLink]="['/']">
             <i class="menu-icon fa fa-fw fa-home"></i>
             <span>Trang chủ</span>
         </a>
-        <a>
+        <a [routerLink]="['/room']">
             <i class="menu-icon fa fa-fw fa-list-alt"></i>
-            <span>Quản lý dãy trọ và nhà cho thuê</span>
+            <span>Quản lý phòng và nhà cho thuê</span>
         </a>
         <a>
             <i class="menu-icon fa fa-fw fa-users"></i>
