@@ -1,6 +1,6 @@
 {
-  "name": "primeng",
-  "version": "8.0.3-SNAPSHOT",
+  "name": "HRFE",
+  "version": "1.0.0-SNAPSHOT",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "postinstall": "ng build --aot --prod",
+  "postinstall": "node --max_old_space_size=4096 --stack_size=4048 node_modules/@angular/cli/bin/ng build --prod -oh all -nc false -sm false --build-optimizer=true -vc --env=prod",
   "engines": {
     "node": "10.16.1",
     "npm": "6.9.0"
@@ -68,6 +68,7 @@
     "zone.js": "~0.9.1"
   },
   "dependencies": {
+    "@ngx-translate/core": "^11.0.1",
     "express": "^4.17.1",
     "path": "^0.12.7"
   }

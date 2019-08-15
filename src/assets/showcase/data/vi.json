@@ -1,0 +1,10 @@
+{
+  "message" : {
+    "stop_room": {
+      "title": "",
+      "content": "Bạn có muốn ngừng kinh doanh phòng\nhà này",
+      "acceptLabel": "Có",
+      "rejectLabel": "Không"
+    }
+  }
+}

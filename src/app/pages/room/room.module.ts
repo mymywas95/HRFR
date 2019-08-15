@@ -12,6 +12,8 @@ import {FormsModule} from '@angular/forms';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 import {InputTextModule} from '../../ui-common/inputtext/inputtext';
 import {TableModule} from '../../ui-common/table/table';
+import {CalendarModule} from '../../ui-common/calendar/calendar';
+import {ConfirmDialogCustomModule} from '../../shared/modules/confirm-dialog-custom/confirm-dialog-custom.module';
 
 @NgModule({
     declarations: [RoomComponent, RoomItemComponent, RoomDetailComponent],
@@ -25,7 +27,9 @@ import {TableModule} from '../../ui-common/table/table';
         ButtonModule,
         DropdownModule,
         InputTextModule,
-        TableModule
+        TableModule,
+        CalendarModule,
+        ConfirmDialogCustomModule
     ]
 })
 export class RoomModule {

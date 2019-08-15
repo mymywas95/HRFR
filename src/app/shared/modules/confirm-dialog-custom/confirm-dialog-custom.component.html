@@ -1,0 +1,12 @@
+<p-dialog modal="true" appendTo="body" [(visible)]="display" responsive="true">
+    <p-header *ngIf="header">
+        {{header}}
+    </p-header>
+    <div *ngIf="message">
+        {{message}}
+    </div>
+    <p-footer>
+        <button pButton *ngIf="acceptLabel" [label]="acceptLabel" (click)="acceptAction()"></button>
+        <button pButton *ngIf="rejectLabel" [label]="rejectLabel" (click)="rejectction()"></button>
+    </p-footer>
+</p-dialog>

@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {SelectItem} from '../../ui-common/common/selectitem';
+import {ConfirmDialogCustomComponent} from '../../shared/modules/confirm-dialog-custom/confirm-dialog-custom.component';
 
 @Component({
     selector: 'was-room',
@@ -12,6 +13,8 @@ export class RoomComponent implements OnInit {
     roomTypeSelected: string;
     roomSelected: string;
     isDetail =  false;
+    @ViewChild(ConfirmDialogCustomComponent, {static: false})
+    private confirmAction: ConfirmDialogCustomComponent;
 
     constructor() {
     }
@@ -52,6 +55,10 @@ export class RoomComponent implements OnInit {
 
     showDetail(data) {
         this.isDetail = true;
+    }
+
+    showDialog(data) {
+        // this.confirmAction.
     }
 
 }
