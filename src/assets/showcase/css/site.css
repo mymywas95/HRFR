@@ -1286,6 +1286,7 @@ a {
 
 .required {
     color: red;
+    margin-left: 5px;
 }
 
 .input {
@@ -1349,4 +1350,8 @@ a {
     border-radius: .25rem;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+}
+
+.full, .full .ui-dropdown {
+    width: 100%;
 }

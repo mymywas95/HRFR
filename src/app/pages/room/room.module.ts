@@ -17,9 +17,10 @@ import {ConfirmDialogCustomModule} from '../../shared/modules/confirm-dialog-cus
 import { RoomNewComponent } from './room-new/room-new.component';
 import {DialogModule} from '../../ui-common/dialog/dialog';
 import {GrowlModule} from '../../ui-common/growl/growl';
+import { RoomGuestComponent } from './room-guest/room-guest.component';
 
 @NgModule({
-    declarations: [RoomComponent, RoomItemComponent, RoomDetailComponent, RoomNewComponent],
+    declarations: [RoomComponent, RoomItemComponent, RoomDetailComponent, RoomNewComponent, RoomGuestComponent],
     imports: [
         CommonModule,
         FormsModule,
