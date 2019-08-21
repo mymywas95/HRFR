@@ -8,7 +8,7 @@
                         <label>Tiền phòng</label>
                     </div>
                     <div class="input">
-                        <input pInputText>
+                        <input pInputText class="append">
                         <div class="input-group-append">
                             <span class="input-group-text">.000VND</span>
                         </div>
@@ -19,7 +19,7 @@
                         <label>Tiền điện</label>
                     </div>
                     <div class="input">
-                        <input pInputText>
+                        <input pInputText class="append">
                         <div class="input-group-append">
                             <span class="input-group-text">.000VND</span>
                         </div>
@@ -30,29 +30,7 @@
                         <label>Tiền nước</label>
                     </div>
                     <div class="input">
-                        <input pInputText>
-                        <div class="input-group-append">
-                            <span class="input-group-text">.000VND</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui-g-12 ui-md-4 ui-lg-4">
-                    <div class="label">
-                        <label>Tiền nước</label>
-                    </div>
-                    <div class="input">
-                        <input pInputText>
-                        <div class="input-group-append">
-                            <span class="input-group-text">.000VND</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui-g-12 ui-md-4 ui-lg-4">
-                    <div class="label">
-                        <label>Tiền gửi xe</label>
-                    </div>
-                    <div class="input">
-                        <input pInputText>
+                        <input pInputText class="append">
                         <div class="input-group-append">
                             <span class="input-group-text">.000VND</span>
                         </div>
@@ -63,7 +41,7 @@
                         <label>Tiền rác</label>
                     </div>
                     <div class="input">
-                        <input pInputText>
+                        <input pInputText class="append">
                         <div class="input-group-append">
                             <span class="input-group-text">.000VND</span>
                         </div>
@@ -74,7 +52,7 @@
                         <label>Số diện cũ</label>
                     </div>
                     <div class="input">
-                        <input pInputText>
+                        <input pInputText class="append">
                         <div class="input-group-append">
                             <span class="input-group-text">.000VND</span>
                         </div>
@@ -85,7 +63,7 @@
                         <label>Số diện hiện tại</label>
                     </div>
                     <div class="input">
-                        <input pInputText>
+                        <input pInputText class="append">
                         <div class="input-group-append">
                             <span class="input-group-text">.000VND</span>
                         </div>
@@ -123,7 +101,7 @@
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
                    <ul class="none-pay-list">
                        <li>7/2019</li>
-                       <li><button pButton label="Chưa thanh toán"></button></li>
+                       <li><button pButton label="Chưa thanh toán" (click)="pay()"></button></li>
                    </ul>
                 </div>
             </div>
@@ -139,13 +117,17 @@
                         <th *ngFor="let col of cols">
                             {{col.header}}
                         </th>
+                        <th class="ng-star-inserted">Thao tác</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-car let-index="rowIndex">
+                <ng-template pTemplate="body" let-car let-index="rowIndex" let-data="rowData">
                     <tr>
                         <td class="text-center">{{index + 1}}</td>
                         <td *ngFor="let col of cols">
                             {{car[col.field]}}
+                        </td>
+                        <td class="text-center">
+                            <button pButton icon="fa fa-trash" type="button" (click)="deleteGuest(car)"></button>
                         </td>
                     </tr>
                 </ng-template>

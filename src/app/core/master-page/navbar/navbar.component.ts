@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -20,6 +20,8 @@ export class NavbarComponent implements OnInit {
 
     searchText: string;
 
+    @Output() menuActiveEvent = new EventEmitter<boolean>();
+
     constructor(private router: Router) {
     }
 
@@ -35,6 +37,7 @@ export class NavbarComponent implements OnInit {
 
     onMenuButtonClick(event: Event) {
         this.menuActive = !this.menuActive;
+        this.menuActiveEvent.emit(this.menuActive);
         event.preventDefault();
     }
 

@@ -1,0 +1,94 @@
+<p-dialog modal="true" [(visible)]="display" responsive="true">
+    <form [formGroup]="profileForm" (ngSubmit)="create()">
+        <div class="ui-g form-group">
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Tên</label><span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="name" required>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Địa chỉ</label> <span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="address" required>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Tiền phòng</label><span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="roomPrice" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">.000VND</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Số điện</label><span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="electricNumber" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">kW</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Số nước</label><span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="waterNumber" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Khối</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Tiền điện</label>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="electricPrice">
+                    <div class="input-group-append">
+                        <span class="input-group-text">.000VND/KW</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Tiền nước</label>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="waterPrice">
+                    <div class="input-group-append">
+                        <span class="input-group-text">.000VND/Khối</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Tiền rác</label>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="trashPrice">
+                    <div class="input-group-append">
+                        <span class="input-group-text">.000VND</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="text-right">
+                <button pButton type="submit" [disabled]="!profileForm.valid" label="Tạo mới"></button>
+                <button pButton type="button" label="Hủy"></button>
+            </div>
+        </p-footer>
+    </form>
+</p-dialog>

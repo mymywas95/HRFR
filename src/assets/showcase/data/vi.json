@@ -5,6 +5,26 @@
       "content": "Bạn có muốn ngừng kinh doanh phòng\nhà này",
       "acceptLabel": "Có",
       "rejectLabel": "Không"
+    },
+    "pay_room": {
+      "title": "",
+      "content": "Bạn có muốn thanh toán tiền {0} cho {1}?",
+      "acceptLabel": "Có",
+      "rejectLabel": "Không"
+    },
+    "delete_guest": {
+      "title": "",
+      "content": "Bạn có muốn xóa {0} ra khỏi danh sách?",
+      "acceptLabel": "Có",
+      "rejectLabel": "Không"
+    },
+    "stop_success": {
+      "title": "",
+      "content": "Đã ngưng hoạt đông {0} thành công"
+    },
+    "create_room_success": {
+      "title": "",
+      "content": "Đã tạo thành công {0}"
     }
   }
 }

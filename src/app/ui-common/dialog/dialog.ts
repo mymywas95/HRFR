@@ -54,7 +54,7 @@ export class Dialog implements OnDestroy {
 
     @Input() header: string;
 
-    @Input() draggable: boolean = true;
+    @Input() draggable: boolean = false;
 
     @Input() resizable: boolean = true;
     

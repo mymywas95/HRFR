@@ -1,7 +1,7 @@
 <div class="layout-wrapper">
-
-    <was-navbar></was-navbar>
-    <div id="layout-content">
+    <was-navbar (menuActiveEvent)="menuActiveAction($event)"></was-navbar>
+    <was-sidebar></was-sidebar>
+    <div id="layout-content" [ngClass]="{'active': menuActive}">
         <div>
             <router-outlet></router-outlet>
         </div>

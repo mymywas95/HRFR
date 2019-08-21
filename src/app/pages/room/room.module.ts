@@ -8,15 +8,18 @@ import { RoomItemComponent } from './room-item/room-item.component';
 import {FieldsetModule} from '../../ui-common/fieldset/fieldset';
 import {ButtonModule} from '../../ui-common/button/button';
 import {DropdownModule} from '../../ui-common/dropdown/dropdown';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 import {InputTextModule} from '../../ui-common/inputtext/inputtext';
 import {TableModule} from '../../ui-common/table/table';
 import {CalendarModule} from '../../ui-common/calendar/calendar';
 import {ConfirmDialogCustomModule} from '../../shared/modules/confirm-dialog-custom/confirm-dialog-custom.module';
+import { RoomNewComponent } from './room-new/room-new.component';
+import {DialogModule} from '../../ui-common/dialog/dialog';
+import {GrowlModule} from '../../ui-common/growl/growl';
 
 @NgModule({
-    declarations: [RoomComponent, RoomItemComponent, RoomDetailComponent],
+    declarations: [RoomComponent, RoomItemComponent, RoomDetailComponent, RoomNewComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -29,7 +32,11 @@ import {ConfirmDialogCustomModule} from '../../shared/modules/confirm-dialog-cus
         InputTextModule,
         TableModule,
         CalendarModule,
-        ConfirmDialogCustomModule
+        ConfirmDialogCustomModule,
+        DialogModule,
+        ReactiveFormsModule,
+        GrowlModule,
+        DropdownModule
     ]
 })
 export class RoomModule {

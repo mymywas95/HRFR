@@ -15,30 +15,5 @@
     </ul>
 </div>
 
-<div id="layout-sidebar" [ngClass]="{'active': menuActive}">
-    <div class="layout-menu">
-        <a [routerLink]="['/']">
-            <i class="menu-icon fa fa-fw fa-home"></i>
-            <span>Trang chủ</span>
-        </a>
-        <a [routerLink]="['/room']">
-            <i class="menu-icon fa fa-fw fa-list-alt"></i>
-            <span>Quản lý phòng và nhà cho thuê</span>
-        </a>
-        <a>
-            <i class="menu-icon fa fa-fw fa-users"></i>
-            <span>Quản lý tài khoản</span>
-        </a>
-        <a>
-            <i class="menu-icon fa fa-fw fa-bar-chart"></i>
-            <span>Thống kế</span>
-        </a>
-        <a>
-            <i class="menu-icon fa fa-fw fa-calendar"></i>
-            <span>Lập lịch</span>
-        </a>
-    </div>
-</div>
-
 <div class="layout-mask" *ngIf="menuActive">
 </div>

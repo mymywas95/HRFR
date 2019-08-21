@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
     selector: 'was-room-detail',
@@ -9,7 +9,8 @@ export class RoomDetailComponent implements OnInit {
     cars: any[];
 
     cols: any[];
-
+    @Output() payEvent = new EventEmitter<any>();
+    @Output() deleteGuestEvent = new EventEmitter<any>();
     constructor() {
     }
 
@@ -30,9 +31,16 @@ export class RoomDetailComponent implements OnInit {
             {field: 'year', header: 'Họ và tên'},
             {field: 'brand', header: 'Ngày sinh'},
             {field: 'color', header: 'SĐT'},
-            {field: 'color', header: 'CMND'},
-            {field: 'color', header: 'Thao tác'},
+            {field: 'color', header: 'CMND'}
         ];
+    }
+
+    deleteGuest(value) {
+       this.deleteGuestEvent.emit(value);
+    }
+
+    pay() {
+        this.payEvent.emit(true);
     }
 
 }
