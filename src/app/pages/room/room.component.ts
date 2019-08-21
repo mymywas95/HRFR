@@ -4,6 +4,8 @@ import {ConfirmDialogCustomComponent} from '../../shared/modules/confirm-dialog-
 import {RoomNewComponent} from './room-new/room-new.component';
 import {LanguageHelperService} from '../../shared/services/language-helper.service';
 import {Message} from '../../ui-common/common/message';
+import {ConfirmDialogCustomService} from '../../shared/modules/confirm-dialog-custom/confirm-dialog-custom.service';
+import {RoomGuestComponent} from './room-guest/room-guest.component';
 
 @Component({
     selector: 'was-room',
@@ -24,7 +26,10 @@ export class RoomComponent implements OnInit {
     @ViewChild(RoomNewComponent, {static: false})
     private roomNew: RoomNewComponent;
 
-    constructor(private languageHelperService: LanguageHelperService) {
+    @ViewChild(RoomGuestComponent, {static: false})
+    private roomGuest: RoomGuestComponent;
+
+    constructor(private languageHelperService: LanguageHelperService, private confirmDialogCustomService: ConfirmDialogCustomService) {
     }
 
     ngOnInit() {
@@ -45,20 +50,67 @@ export class RoomComponent implements OnInit {
     }
 
     create() {
+        this.roomNew.initDefaultForm();
         this.roomNew.display = true;
+    }
+
+    createGuestEmitAction() {
+        this.roomGuest.initDefaultForm();
+        this.roomGuest.display = true;
     }
 
     createRoomAction(value) {
         this.roomNew.display = false;
-        this.showToast({messageId: 'create_room_success'});
+        let name = value.roomType;
+        if (value.roomType === 'room') {
+            name = name + ' - ' + value.roomArea;
+        }
+        name = name + ' - ' + value.name;
+        if (value.roomType === 'area') {
+            const data = {
+                messageId: 'create_success',
+                arrayStringValue: [name]
+            };
+            this.showToast(data);
+        } else {
+            this.showDetail(true);
+            this.showConfirmOk({
+                messageId: 'create_guest_confirm',
+                arrayStringValue: [name],
+                accept: () => {
+                    this.createGuestEmitAction();
+                }
+            });
+        }
     }
 
-    deleteGuestAction(value) {
+    createGuestAction(value) {
+        this.roomGuest.display = false;
         const data = {
-            messageId: 'delete_guest',
-            arrayStringValue: [value.year]
+            messageId: 'create_success',
+            arrayStringValue: [value.name]
+        };
+        this.showToast(data);
+    }
+
+    deleteGuestEmitAction(value) {
+        const arrString = [value.name];
+        const data = {
+            messageId: 'delete_confirm',
+            arrayStringValue: arrString,
+            accept: () => {
+                this.deleteGuestAction(arrString);
+            }
         };
         this.showConfirmOk(data);
+    }
+
+    deleteGuestAction(arrString) {
+        const data = {
+            messageId: 'delete_success',
+            arrayStringValue: arrString
+        };
+        this.showToast(data);
     }
 
 
@@ -79,12 +131,24 @@ export class RoomComponent implements OnInit {
         }
     }
 
-    payAction(value) {
+    payEmitAction(value) {
+        const arrayValue = ['tháng 7/2019', 'Phòng cho Thuê - Khu Vườn Lài - phòng số 1']
         const data = {
             messageId: 'pay_room',
-            arrayStringValue: ['tháng 7/2019', 'Phòng cho Thuê - Khu Vườn Lài - phòng số 1']
+            arrayStringValue: arrayValue,
+            accept: () => {
+                this.payAction(arrayValue);
+            }
         };
         this.showConfirmOk(data);
+    }
+
+    payAction(arrayValue) {
+        const data = {
+            messageId: 'pay_room_success',
+            arrayStringValue: arrayValue,
+        };
+        this.showToast(data);
     }
 
     showDetail(data) {
@@ -97,24 +161,47 @@ export class RoomComponent implements OnInit {
 
     showToast(value) {
         const header = this.languageHelperService.getMessageText('message.' + value.messageId + '.title');
-        const message = this.languageHelperService.getMessageText('message.' + value.messageId + '.content');
+        let message = this.languageHelperService.getMessageText('message.' + value.messageId + '.content');
+        if (value.arrayStringValue) {
+            message = this.confirmDialogCustomService.formatMessageWithData(value.arrayStringValue, message);
+        }
         const serverity = value.isSuccess && value.isSuccess === false ? 'error' : 'success';
         this.msgs = [];
         this.msgs.push({severity: serverity, summary: header, detail: message});
     }
 
     stop() {
+        const header = this.initHeader();
         const data = {
             messageId: 'stop_room',
+            arrayStringValue: [header],
             accept: () => {
-                this.stopAction();
+                this.stopAction(header);
             }
         };
         this.showConfirmOk(data);
     }
 
-    stopAction() {
-        this.showToast({messageId: 'stop_success'});
+    stopAction(header) {
+        const data = {messageId: 'stop_success', arrayStringValue: [header]};
+        this.showToast(data);
+        this.back();
+    }
+
+    updateRoomEventAction(data) {
+        const object = {
+            messageId: 'update_room_confirm',
+            arrayStringValue: [data.label, data.value],
+            accept: () => {
+                this.updateRoomAction(data.label);
+            }
+        };
+        this.showConfirmOk(object);
+    }
+
+    updateRoomAction(lable) {
+        const data = {messageId: 'update_success', arrayStringValue: [lable]};
+        this.showToast(data);
     }
 
     showDialog(data) {

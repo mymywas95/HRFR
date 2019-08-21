@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {LanguageHelperService} from '../../services/language-helper.service';
+import {ConfirmDialogCustomService} from './confirm-dialog-custom.service';
 
 @Component({
     selector: 'was-confirm-dialog-custom',
@@ -15,7 +16,7 @@ export class ConfirmDialogCustomComponent implements OnInit, OnChanges {
     public accept: any;
     public reject: any;
 
-    constructor(private languageHelperService: LanguageHelperService) {
+    constructor(private languageHelperService: LanguageHelperService, private confirmDialogCustomService: ConfirmDialogCustomService) {
     }
 
     @Input()
@@ -28,7 +29,7 @@ export class ConfirmDialogCustomComponent implements OnInit, OnChanges {
     @Input()
     private set arrayStringValue(value: string[]) {
         if (value) {
-            this.formatMessageWithData(value);
+            this.message = this.confirmDialogCustomService.formatMessageWithData(value, this.message);
         }
     }
 
@@ -84,7 +85,7 @@ export class ConfirmDialogCustomComponent implements OnInit, OnChanges {
         if (value.messageId) {
             this.setDataforModel(value.messageId);
             if (value.arrayStringValue) {
-                this.formatMessageWithData(value.arrayStringValue);
+                this.message = this.confirmDialogCustomService.formatMessageWithData(value.arrayStringValue, this.message);
             }
         }
         this.toggleDialog(true);

@@ -5,50 +5,63 @@
             <div class="overview-box-details">
                 <i class="fa fa-money overview-box-details-icon"></i>
                 <span class="overview-box-details-count">150</span></div>
-            <div class="overview-box-stats" style="color:#3fb839"><i
+            <div class="overview-box-stats"><i
                     class="fa fa-caret-up overview-box-details-icon"></i>
                 %50
+            </div>
+            <div class="chart-block">
+                <img src="../../../../assets/showcase/images/chart-1.svg">
             </div>
         </div>
     </div>
     <div class="ui-g-12 ui-md-6 ui-lg-3 dashboard">
-        <div class="ui-g card overview-box overview-box-1 no-gutter">
+        <div class="ui-g card overview-box overview-box-2 no-gutter">
             <div class="overview-box-title">Số phòng trọ sắp thu tiền</div>
             <div class="overview-box-details">
                 <i class="fa fa-money overview-box-details-icon"></i>
                 <span class="overview-box-details-count">150</span></div>
-            <div class="overview-box-stats" style="color:#3fb839"><i
+            <div class="overview-box-stats"><i
                     class="fa fa-caret-up overview-box-details-icon"></i>
                 %50
+            </div>
+            <div class="chart-block">
+                <img src="../../../../assets/showcase/images/chart-2.svg">
             </div>
         </div>
     </div>
 
     <div class="ui-g-12 ui-md-6 ui-lg-3 dashboard">
-        <div class="ui-g card overview-box overview-box-1 no-gutter">
+        <div class="ui-g card overview-box overview-box-3 no-gutter">
             <div class="overview-box-title">Số nhà nguyên căn chưa thu tiền</div>
             <div class="overview-box-details">
                 <i class="fa fa-money overview-box-details-icon"></i>
                 <span class="overview-box-details-count">150</span></div>
-            <div class="overview-box-stats" style="color:#3fb839"><i
+            <div class="overview-box-stats"><i
                     class="fa fa-caret-up overview-box-details-icon"></i>
                 %50
+            </div>
+            <div class="chart-block">
+                <img src="../../../../assets/showcase/images/chart-3.svg">
             </div>
         </div>
     </div>
     <div class="ui-g-12 ui-md-6 ui-lg-3 dashboard">
-        <div class="ui-g card overview-box overview-box-1 no-gutter">
+        <div class="ui-g card overview-box overview-box-4 no-gutter">
             <div class="overview-box-title">Số nhà nguyên căn săp thu tiền</div>
             <div class="overview-box-details">
                 <i class="fa fa-money overview-box-details-icon"></i>
-                <span class="overview-box-details-count">150</span></div>
-            <div class="overview-box-stats" style="color:#3fb839"><i
+                <span class="overview-box-details-count">150</span>
+            </div>
+            <div class="overview-box-stats"><i
                     class="fa fa-caret-up overview-box-details-icon"></i>
                 %50
             </div>
+            <div class="chart-block">
+                <img src="../../../../assets/showcase/images/chart-4.svg">
+            </div>
         </div>
     </div>
-    <div class="ui-g-12 ui-lg-4 contacts">
+    <div class="ui-g-12 ui-lg-3 contacts">
         <p-panel header="Thanh toán gần đây">
             <ul>
                 <li *ngFor="let number of [0,1,2,3,4]" class="clearfix">
@@ -64,7 +77,7 @@
             </ul>
         </p-panel>
     </div>
-    <div class="ui-g-12 ui-lg-4 contacts">
+    <div class="ui-g-12 ui-lg-3 contacts">
         <p-panel header="Nợ lâu ngày">
             <ul>
                 <li *ngFor="let number of [0,1,2,3,4]" class="clearfix">
@@ -80,9 +93,10 @@
             </ul>
         </p-panel>
     </div>
-    <div class="ui-g-12 ui-lg-4 contacts">
+    <div class="ui-g-12 ui-lg-6 contacts">
         <p-panel header="Thống kê thu chi">
-            <p-chart type="line" [data]="data"></p-chart>
+<!--            <p-chart type="line" [data]="data"></p-chart>-->
+            <p-fullCalendar [events]="events" [options]="options"></p-fullCalendar>
         </p-panel>
     </div>
 </div>

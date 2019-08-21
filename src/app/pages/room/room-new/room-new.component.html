@@ -6,7 +6,7 @@
                     <label>Loại</label><span class="required">(*)</span>
                 </div>
                 <div class="input">
-                   <p-dropdown ngClass="full" [options]="roomType" formControlName="roomType"></p-dropdown>
+                   <p-dropdown ngClass="full" [options]="roomType" formControlName="roomType" (onChange)="changeRoomtype()"></p-dropdown>
                 </div>
             </div>
             <div class="ui-g-12" *ngIf="profileForm.value['roomType'] === 'room'">
@@ -33,77 +33,79 @@
                     <input pInputText formControlName="address" required>
                 </div>
             </div>
-            <div class="ui-g-12">
-                <div class="label">
-                    <label>Tiền phòng</label><span class="required">(*)</span>
-                </div>
-                <div class="input">
-                    <input class="append" pInputText formControlName="roomPrice" required>
-                    <div class="input-group-append">
-                        <span class="input-group-text">.000VND</span>
+            <ng-container *ngIf="profileForm.value['roomType'] !== 'area' ">
+                <div class="ui-g-12">
+                    <div class="label">
+                        <label>Tiền phòng</label><span class="required">(*)</span>
+                    </div>
+                    <div class="input">
+                        <input type="number" class="append" pInputText formControlName="roomPrice" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="label">
-                    <label>Số điện</label><span class="required">(*)</span>
-                </div>
-                <div class="input">
-                    <input class="append" pInputText formControlName="electricNumber" required>
-                    <div class="input-group-append">
-                        <span class="input-group-text">kW</span>
+                <div class="ui-g-12">
+                    <div class="label">
+                        <label>Số điện</label><span class="required">(*)</span>
+                    </div>
+                    <div class="input">
+                        <input type="number" class="append" pInputText formControlName="electricNumber" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">kW</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="label">
-                    <label>Số nước</label><span class="required">(*)</span>
-                </div>
-                <div class="input">
-                    <input class="append" pInputText formControlName="waterNumber" required>
-                    <div class="input-group-append">
-                        <span class="input-group-text">Khối</span>
+                <div class="ui-g-12">
+                    <div class="label">
+                        <label>Số nước</label><span class="required">(*)</span>
+                    </div>
+                    <div class="input">
+                        <input type="number" class="append" pInputText formControlName="waterNumber" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">Khối</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="label">
-                    <label>Tiền điện</label>
-                </div>
-                <div class="input">
-                    <input class="append" pInputText formControlName="electricPrice">
-                    <div class="input-group-append">
-                        <span class="input-group-text">.000VND/KW</span>
+                <div class="ui-g-12">
+                    <div class="label">
+                        <label>Tiền điện</label>
+                    </div>
+                    <div class="input">
+                        <input type="number" class="append" pInputText formControlName="electricPrice">
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="label">
-                    <label>Tiền nước</label>
-                </div>
-                <div class="input">
-                    <input class="append" pInputText formControlName="waterPrice">
-                    <div class="input-group-append">
-                        <span class="input-group-text">.000VND/Khối</span>
+                <div class="ui-g-12">
+                    <div class="label">
+                        <label>Tiền nước</label>
+                    </div>
+                    <div class="input">
+                        <input type="number" class="append" pInputText formControlName="waterPrice">
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="label">
-                    <label>Tiền rác</label>
-                </div>
-                <div class="input">
-                    <input class="append" pInputText formControlName="trashPrice">
-                    <div class="input-group-append">
-                        <span class="input-group-text">.000VND</span>
+                <div class="ui-g-12">
+                    <div class="label">
+                        <label>Tiền rác</label>
+                    </div>
+                    <div class="input">
+                        <input type="number" class="append" pInputText formControlName="trashPrice">
+                        <div class="input-group-append">
+                            <span class="input-group-text">.000VND</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </ng-container>
         </div>
         <p-footer>
             <div class="text-right">
                 <button pButton type="submit" [disabled]="!profileForm.valid" label="Tạo mới"></button>
-                <button pButton type="button" label="Hủy" (click)="display = !display"></button>
+                <button pButton type="button" label="Hủy" (click)="display = !display" class="ui-button-secondary"></button>
             </div>
         </p-footer>
     </form>

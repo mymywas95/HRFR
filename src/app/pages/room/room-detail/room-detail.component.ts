@@ -7,40 +7,72 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class RoomDetailComponent implements OnInit {
     cars: any[];
+    guestList: any[];
+    room;
 
     cols: any[];
     @Output() payEvent = new EventEmitter<any>();
     @Output() deleteGuestEvent = new EventEmitter<any>();
+    @Output() createGuestEvent = new EventEmitter();
+    @Output() updateRoomEvent = new EventEmitter<any>();
+
     constructor() {
     }
 
     ngOnInit() {
-        this.cars = [
-            {brand: 'VW', year: 2012, color: 'Orange', vin: 'dsad231ff'},
-            {brand: 'Audi', year: 2011, color: 'Black', vin: 'gwregre345'},
-            {brand: 'Renault', year: 2005, color: 'Gray', vin: 'h354htr'},
-            {brand: 'BMW', year: 2003, color: 'Blue', vin: 'j6w54qgh'},
-            {brand: 'Mercedes', year: 1995, color: 'Orange', vin: 'hrtwy34'},
-            {brand: 'Volvo', year: 2005, color: 'Black', vin: 'jejtyj'},
-            {brand: 'Honda', year: 2012, color: 'Yellow', vin: 'g43gr'},
-            {brand: 'Jaguar', year: 2013, color: 'Orange', vin: 'greg34'},
-            {brand: 'Ford', year: 2000, color: 'Black', vin: 'h54hw5'},
-            {brand: 'Fiat', year: 2013, color: 'Red', vin: '245t2s'}
-        ];
+        this.initGuestData();
+        this.initRoomData();
+    }
+
+    createGuest() {
+        this.createGuestEvent.emit();
+    }
+
+    initGuestData() {
         this.cols = [
-            {field: 'year', header: 'Họ và tên'},
-            {field: 'brand', header: 'Ngày sinh'},
-            {field: 'color', header: 'SĐT'},
-            {field: 'color', header: 'CMND'}
+            {field: 'name', header: 'Họ và tên'},
+            {field: 'birthday', header: 'Ngày sinh'},
+            {field: 'phone', header: 'SĐT'},
+            {field: 'identityNumber', header: 'CMND'}
+        ];
+        this.guestList = [
+            {id: 1, name: 'Nguyễn Văn A', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
+            {id: 2, name: 'Nguyễn Văn B', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
+            {id: 3, name: 'Nguyễn Văn C', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
+            {id: 4, name: 'Nguyễn Văn D', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
+            {id: 5, name: 'Nguyễn Văn E', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
+            {id: 6, name: 'Nguyễn Văn F', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
         ];
     }
 
+    initRoomData() {
+        this.room = {
+            roomPrice: 0,
+            waterPrice: 0,
+            electricPrice: 0,
+            trashPrice: 0,
+            carPrice: 0,
+            waterNumber: 0,
+            waterOldNumber: 0,
+            electricNumber: 0,
+            electricOldNumber: 0
+        };
+    }
+
     deleteGuest(value) {
-       this.deleteGuestEvent.emit(value);
+        this.deleteGuestEvent.emit(value);
     }
 
     pay() {
         this.payEvent.emit(true);
+    }
+
+    update(field, label, value) {
+        this.updateRoomEvent.emit({
+            field,
+            label,
+            value
+        });
     }
 
 }

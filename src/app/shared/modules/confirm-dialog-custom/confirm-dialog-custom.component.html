@@ -7,6 +7,6 @@
     </div>
     <p-footer>
         <button pButton *ngIf="acceptLabel" [label]="acceptLabel" (click)="acceptAction()"></button>
-        <button pButton *ngIf="rejectLabel" [label]="rejectLabel" (click)="rejectAction()"></button>
+        <button pButton *ngIf="rejectLabel" class="ui-button-secondary" [label]="rejectLabel" (click)="rejectAction()"></button>
     </p-footer>
 </p-dialog>

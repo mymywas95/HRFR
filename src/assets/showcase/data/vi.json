@@ -2,29 +2,53 @@
   "message" : {
     "stop_room": {
       "title": "",
-      "content": "Bạn có muốn ngừng kinh doanh phòng\nhà này",
+      "content": "Bạn có muốn ngừng kinh doanh [{0}]?",
       "acceptLabel": "Có",
       "rejectLabel": "Không"
     },
     "pay_room": {
       "title": "",
-      "content": "Bạn có muốn thanh toán tiền {0} cho {1}?",
+      "content": "Bạn có muốn thanh toán tiền {0} cho [{1}]?",
       "acceptLabel": "Có",
       "rejectLabel": "Không"
     },
-    "delete_guest": {
+    "pay_room_success": {
       "title": "",
-      "content": "Bạn có muốn xóa {0} ra khỏi danh sách?",
+      "content": "Bạn đã thanh toán tiền {0} cho [{1}] thành công."
+    },
+    "delete_confirm": {
+      "title": "",
+      "content": "Bạn có muốn xóa [{0}] ra khỏi danh sách?",
       "acceptLabel": "Có",
       "rejectLabel": "Không"
+    },
+    "delete_success": {
+      "title": "",
+      "content": "Bạn đã muốn xóa [{0}] thành công."
     },
     "stop_success": {
       "title": "",
-      "content": "Đã ngưng hoạt đông {0} thành công"
+      "content": "Đã ngưng hoạt đông [{0}] thành công"
     },
-    "create_room_success": {
+    "create_success": {
       "title": "",
-      "content": "Đã tạo thành công {0}"
+      "content": "Đã tạo thành công [{0}]"
+    },
+    "update_success": {
+      "title": "",
+      "content": "Đã cập nhật [{0}] thành công"
+    },
+    "create_guest_confirm": {
+      "title": "",
+      "content": "Bạn có muốn thêm khách vào [{0}]?",
+      "acceptLabel": "Có",
+      "rejectLabel": "Không"
+    },
+    "update_room_confirm": {
+      "title": "",
+      "content": "Bạn có muốn cập nhật [{0}] với giá trị là [{1}] không?",
+      "acceptLabel": "Có",
+      "rejectLabel": "Không"
     }
   }
 }

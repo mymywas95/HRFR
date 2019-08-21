@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {RoomComponent} from './room.component';
 import {RoomRoutingModule} from './room-routing.module';
 import {PanelModule} from '../../ui-common/panel/panel';
@@ -38,7 +38,8 @@ import { RoomGuestComponent } from './room-guest/room-guest.component';
         ReactiveFormsModule,
         GrowlModule,
         DropdownModule
-    ]
+    ],
+    providers:[DatePipe]
 })
 export class RoomModule {
 }

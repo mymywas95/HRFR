@@ -1,1 +1,44 @@
-<p>room-guest works!</p>
+<p-dialog modal="true" [(visible)]="display" responsive="true">
+    <form [formGroup]="profileForm" (ngSubmit)="create()">
+        <div class="ui-g form-group">
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Tên</label><span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="name" required>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Ngày sinh</label><span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <p-calendar appendTo="body" formControlName="birthday" required></p-calendar>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>CMND</label> <span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="identityNumber" required>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>SĐT</label> <span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="phone" required>
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="text-right">
+                <button pButton type="submit" [disabled]="!profileForm.valid" label="Tạo mới"></button>
+                <button pButton type="button" label="Hủy" (click)="display = !display" class="ui-button-secondary"></button>
+            </div>
+        </p-footer>
+    </form>
+</p-dialog>

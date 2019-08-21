@@ -3,8 +3,8 @@
         Quản lý phòng và nhà cho thuê
     </div>
     <div class="ui-g-12 ui-md-6 ui-lg-6 page-action">
-        <button *ngIf="isDetail" pButton label="Quay lại" (click)="back()"></button>
-        <button *ngIf="isDetail" pButton label="Ngưng hoạt động" (click)="stop()"></button>
+        <button *ngIf="isDetail" pButton label="Quay lại" class="ui-button-secondary" (click)="back()"></button>
+        <button *ngIf="isDetail" pButton label="Ngưng hoạt động" class="ui-button-danger" (click)="stop()"></button>
         <button pButton label="Tạo mới" (click)="create()"></button>
     </div>
 </div>
@@ -21,10 +21,12 @@
     <p-panel [header]="initHeader()" [ngClass]="{'detail': isDetail}">
         <div class="content-panel-block">
             <was-room-item *ngIf="!isDetail" (showDetailEvent)="showDetail($event)"></was-room-item>
-            <was-room-detail (payEvent)="payAction($event)" (deleteGuestEvent)="deleteGuestAction($event)"  *ngIf="isDetail"></was-room-detail>
+            <was-room-detail (payEvent)="payEmitAction($event)" (deleteGuestEvent)="deleteGuestEmitAction($event)"
+                            (createGuestEvent)="createGuestEmitAction()" (updateRoomEvent)="updateRoomEventAction($event)" *ngIf="isDetail"></was-room-detail>
         </div>
     </p-panel>
 </div>
 <was-room-new (createRoomEvent)="createRoomAction($event)"></was-room-new>
+<was-room-guest (createGuestEvent)="createGuestAction($event)"></was-room-guest>
 <p-growl [(value)]="msgs"></p-growl>
 <was-confirm-dialog-custom></was-confirm-dialog-custom>

@@ -1,0 +1,33 @@
+.chart-block {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+}
+
+.dashboard .overview-box .overview-box-details-icon, .overview-box-details, .overview-box-title, .overview-box-stats {
+  color: #FFFFFF;
+}
+
+.overview-box {
+  position: relative;
+}
+
+.overview-box-stats {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.12);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 2px 4px;
+  color: #ffffff;
+}
+
+.dashboard .overview-box .overview-box-details {
+  padding: 15px 0;
+}
+
+.clearfix:hover {
+  background: #e8e8e8;
+}

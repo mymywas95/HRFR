@@ -8,7 +8,8 @@
                         <label>Tiền phòng</label>
                     </div>
                     <div class="input">
-                        <input pInputText class="append">
+                        <input pInputText class="append" type="number" [(ngModel)]="room.roomPrice"
+                               (change)="update('roomPrice', 'Tiền phòng', $event.target.value)">
                         <div class="input-group-append">
                             <span class="input-group-text">.000VND</span>
                         </div>
@@ -19,7 +20,8 @@
                         <label>Tiền điện</label>
                     </div>
                     <div class="input">
-                        <input pInputText class="append">
+                        <input pInputText class="append" type="number" [(ngModel)]="room.electricPrice"
+                               (change)="update('electricPrice', 'Tiền điện', $event.target.value)">
                         <div class="input-group-append">
                             <span class="input-group-text">.000VND</span>
                         </div>
@@ -30,7 +32,8 @@
                         <label>Tiền nước</label>
                     </div>
                     <div class="input">
-                        <input pInputText class="append">
+                        <input pInputText class="append" type="number" [(ngModel)]="room.waterNumber"
+                               (change)="update('waterNumber', 'Tiền nước', $event.target.value)">
                         <div class="input-group-append">
                             <span class="input-group-text">.000VND</span>
                         </div>
@@ -41,7 +44,8 @@
                         <label>Tiền rác</label>
                     </div>
                     <div class="input">
-                        <input pInputText class="append">
+                        <input pInputText class="append" type="number" [(ngModel)]="room.trashPrice"
+                               (change)="update('trashPrice', 'Tiền rác', $event.target.value)">
                         <div class="input-group-append">
                             <span class="input-group-text">.000VND</span>
                         </div>
@@ -49,23 +53,25 @@
                 </div>
                 <div class="ui-g-12 ui-md-4 ui-lg-4">
                     <div class="label">
-                        <label>Số diện cũ</label>
+                        <label>Số điện cũ</label>
                     </div>
                     <div class="input">
-                        <input pInputText class="append">
+                        <input pInputText class="append" type="number" [(ngModel)]="room.electricOldNumber"
+                               (change)="update('electricOldNumber', 'Số điện cũ', $event.target.value)">
                         <div class="input-group-append">
-                            <span class="input-group-text">.000VND</span>
+                            <span class="input-group-text">KW</span>
                         </div>
                     </div>
                 </div>
                 <div class="ui-g-12 ui-md-4 ui-lg-4">
                     <div class="label">
-                        <label>Số diện hiện tại</label>
+                        <label>Số điện hiện tại</label>
                     </div>
                     <div class="input">
-                        <input pInputText class="append">
+                        <input pInputText class="append" type="number" [(ngModel)]="room.electricNumber"
+                               (change)="update('electricNumber', 'Số điện hiện tại', $event.target.value)">
                         <div class="input-group-append">
-                            <span class="input-group-text">.000VND</span>
+                            <span class="input-group-text">KW</span>
                         </div>
                     </div>
                 </div>
@@ -74,9 +80,10 @@
                         <label>Số nước cũ</label>
                     </div>
                     <div class="input">
-                        <input pInputText>
+                        <input pInputText type="number" [(ngModel)]="room.waterOldNumber"
+                               (change)="update('waterOldNumber', 'Số nước cũ', $event.target.value)">
                         <div class="input-group-append">
-                            <span class="input-group-text">.000VND</span>
+                            <span class="input-group-text">Khối</span>
                         </div>
                     </div>
                 </div>
@@ -85,9 +92,10 @@
                         <label>Số nước hiện tại</label>
                     </div>
                     <div class="input">
-                        <input pInputText>
+                        <input pInputText type="number" [(ngModel)]="room.waterNumber"
+                               (change)="update('waterNumber', 'Số nước hiện tại', $event.target.value)">
                         <div class="input-group-append">
-                            <span class="input-group-text">.000VND</span>
+                            <span class="input-group-text">Khối</span>
                         </div>
                     </div>
                 </div>
@@ -108,9 +116,17 @@
         </div>
     </div>
     <div class="ui-g-12 ui-md-12 ui-lg-12 ui-noPadBot ui-noPadTop">
-        <div class="card card-w-title ui-noMarBot ui-noPadTop ui-pad-bot-5">
-            <h1>Thông tin khách trọ</h1>
-            <p-table [value]="cars" [scrollable]="true" scrollHeight="18vh">
+        <div class="card card-w-title ui-noMarBot ui-pad-bot-5">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-6 ui-lg-6">
+                    <h1>Thông tin khách trọ</h1>
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-6 text-right">
+                    <button pButton label="Tạo mới" (click)="createGuest()"></button>
+                </div>
+            </div>
+
+            <p-table [value]="guestList" [scrollable]="true" scrollHeight="18vh">
                 <ng-template pTemplate="header">
                     <tr>
                         <th class="ng-star-inserted">STT</th>
@@ -120,14 +136,14 @@
                         <th class="ng-star-inserted">Thao tác</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-car let-index="rowIndex" let-data="rowData">
+                <ng-template pTemplate="body" let-guest let-index="rowIndex" let-data="rowData">
                     <tr>
                         <td class="text-center">{{index + 1}}</td>
                         <td *ngFor="let col of cols">
-                            {{car[col.field]}}
+                            {{guest[col.field]}}
                         </td>
                         <td class="text-center">
-                            <button pButton icon="fa fa-trash" type="button" (click)="deleteGuest(car)"></button>
+                            <button pButton icon="fa fa-trash" type="button" (click)="deleteGuest(guest)" class="ui-button-danger"></button>
                         </td>
                     </tr>
                 </ng-template>

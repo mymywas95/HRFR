@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SelectItem} from '../../../ui-common/common/selectitem';
 
 @Component({
@@ -21,6 +21,18 @@ export class RoomNewComponent implements OnInit {
         this.initDefaultForm();
     }
 
+    changeRoomtype() {
+        if (this.profileForm.value.roomType === 'area') {
+            this.profileForm.controls.roomPrice.setValue(0);
+            this.profileForm.controls.waterPrice.setValue(0);
+            this.profileForm.controls.electricPrice.setValue(0);
+            this.profileForm.controls.trashPrice.setValue(0);
+            this.profileForm.controls.carPrice.setValue(0);
+            this.profileForm.controls.waterNumber.setValue(0);
+            this.profileForm.controls.electricNumber.setValue(0);
+        }
+    }
+
     create() {
         this.createRoomEvent.emit(this.profileForm.value);
     }
@@ -40,14 +52,13 @@ export class RoomNewComponent implements OnInit {
             roomArea: new FormControl(this.roomArea[0].value),
             name: new FormControl(''),
             address: new FormControl(''),
-            roomPrice: new FormControl(''),
-            waterPrice: new FormControl(''),
-            electricPrice: new FormControl(''),
-            trashPrice: new FormControl(''),
-            carPrice: new FormControl(''),
+            roomPrice: new FormControl(0),
+            waterPrice: new FormControl(0),
+            electricPrice: new FormControl(0),
+            trashPrice: new FormControl(0),
+            carPrice: new FormControl(0),
             waterNumber: new FormControl(0),
             electricNumber: new FormControl(0),
         });
     }
-
 }

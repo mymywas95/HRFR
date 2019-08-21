@@ -9,3 +9,11 @@
     background-color: transparent!important;
   }
 }
+
+:host ::ng-deep {
+  .input .input-group-append .input-group-text {
+    display: block;
+    min-width: 60px;
+    text-align: right;
+  }
+}
