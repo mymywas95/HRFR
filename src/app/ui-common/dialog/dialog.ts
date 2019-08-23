@@ -276,9 +276,9 @@ export class Dialog implements OnDestroy {
         let viewport = DomHandler.getViewport();
         let x = Math.max(Math.floor((viewport.width - elementWidth) / 2), 0);
         let y = Math.max(Math.floor((viewport.height - elementHeight) / 2), 0);
-
+        let nav = document.getElementById('layout-topbar').clientHeight;
         this.container.style.left = x + 'px';
-        this.container.style.top = y + 'px';
+        this.container.style.top = y + (nav/2) + 'px';
     }
     
     enableModality() {

@@ -7,10 +7,12 @@
     </a>
     <ul class="topbar-menu">
         <li>
-            <a href="#">
+            <a (click)="menu.toggle($event)" class="user-block">
                 <span class="username">Emma Davis</span>
                 <img src="../../../../assets/showcase/images/person-svg-anonymous-6.png">
-                <i class="fa fa-angle-down"></i></a>
+                <i class="fa fa-angle-down"></i>
+            </a>
+            <p-menu #menu [popup]="true" [model]="items"></p-menu>
         </li>
     </ul>
 </div>

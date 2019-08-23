@@ -46,8 +46,8 @@ export class RoomComponent implements OnInit {
         ];
         this.roomTypeSelected = this.roomTypeList[0].value;
         this.roomList = [
-            {label: 'Khu Vườn Lài', value: null},
-            {label: 'Khu FPT', value: null}
+            {label: 'Khu Vườn Lài', value: 'lai'},
+            {label: 'Khu FPT', value: 'FPT'}
         ];
         this.roomSelected = this.roomList[0].value;
     }

@@ -1402,3 +1402,13 @@ body .ui-table .ui-table-tbody > tr.ui-state-highlight {
     border-color: #c8c8c8;
     outline: none;
 }
+
+body .ui-menu .ui-menuitem-link:hover,
+body .ui-menubar .ui-menuitem-link:hover,
+body .ui-tieredmenu .ui-menuitem-link:hover,
+body .ui-contextmenu .ui-menuitem-link:hover,
+body .ui-megamenu .ui-menuitem-link:hover,
+body .ui-slidemenu .ui-menuitem-link:hover {
+    background-color: #F6F9FB;
+    color: #7d8286;
+}

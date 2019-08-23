@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
+import {MenuItem} from '../../../ui-common/common/menuitem';
 
 @Component({
     selector: 'was-navbar',
@@ -10,15 +11,9 @@ export class NavbarComponent implements OnInit {
 
     menuActive: boolean;
 
-    activeMenuId: string;
-
-    darkDemoStyle: HTMLStyleElement;
-
     routes: Array<string> = [];
 
-    filteredRoutes: Array<string> = [];
-
-    searchText: string;
+    items: MenuItem[];
 
     @Output() menuActiveEvent = new EventEmitter<boolean>();
 
@@ -26,13 +21,9 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        const routes = this.router.config;
-        for (const route of routes) {
-            if (route.path && route.path !== 'datagrid' && route.path !== 'datalist'
-                && route.path !== 'datascroller' && route.path !== 'growl') {
-                this.routes.push(route.path.charAt(0).toUpperCase() + route.path.substr(1));
-            }
-        }
+        this.items = [
+            {label: 'Đăng Xuất', icon: 'fa fa-sign-out'}
+        ];
     }
 
     onMenuButtonClick(event: Event) {

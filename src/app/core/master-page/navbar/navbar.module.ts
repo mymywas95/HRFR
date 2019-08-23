@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AutoCompleteModule} from '../../../ui-common/autocomplete/autocomplete';
+import {MenuModule} from '../../../ui-common/menu/menu';
 
 @NgModule({
     declarations: [NavbarComponent],
@@ -20,7 +21,8 @@ import {AutoCompleteModule} from '../../../ui-common/autocomplete/autocomplete';
         AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        AutoCompleteModule
+        AutoCompleteModule,
+        MenuModule
     ]
 })
 export class NavbarModule { }
