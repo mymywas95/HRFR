@@ -126,7 +126,8 @@
                 </div>
             </div>
 
-            <p-table [value]="guestList" [scrollable]="true" scrollHeight="18vh">
+            <p-table [value]="guestList" [scrollable]="true" scrollHeight="18vh" selectionMode="single"
+                     dataKey="id" [(selection)]="guestSelected">
                 <ng-template pTemplate="header">
                     <tr>
                         <th class="ng-star-inserted">STT</th>
@@ -136,14 +137,53 @@
                         <th class="ng-star-inserted">Thao tác</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-guest let-index="rowIndex" let-data="rowData">
-                    <tr>
+                <ng-template pTemplate="body" let-rowData let-index="rowIndex" let-data="rowData">
+                    <tr [pSelectableRow]="rowData">
                         <td class="text-center">{{index + 1}}</td>
-                        <td *ngFor="let col of cols">
-                            {{guest[col.field]}}
+                        <td pEditableColumn [title]="rowData['name']">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData['name']">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData['name']}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn [title]="rowData['birthday']">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData['birthday']">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData['birthday']}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn [title]="rowData['phone']">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData['phone']">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData['phone']}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td pEditableColumn [title]="rowData['identityNumber']">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData['identityNumber']">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData['identityNumber']}}
+                                </ng-template>
+                            </p-cellEditor>
                         </td>
                         <td class="text-center">
-                            <button pButton icon="fa fa-trash" type="button" (click)="deleteGuest(guest)" class="ui-button-danger"></button>
+                            <div class="table-button">
+                                <button pButton icon="fa fa-trash" type="button" (click)="deleteGuest(rowData)" class="ui-button-danger"></button>
+                            </div>
                         </td>
                     </tr>
                 </ng-template>

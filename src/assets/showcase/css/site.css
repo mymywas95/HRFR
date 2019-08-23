@@ -1284,7 +1284,9 @@ a {
 .ui-noMarBot {
     margin-bottom: 0!important;;
 }
-
+.ui-pad-5 {
+    padding: 5px!important;
+}
 .ui-pad-bot-5 {
     padding-bottom: 5px!important;;
 }
@@ -1367,4 +1369,36 @@ a {
 
 .full, .full .ui-dropdown {
     width: 100%;
+}
+
+body .ui-table .ui-table-tbody > tr > td {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    line-height: 2em;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.table-button, .table-button button {
+    height: 1.8em;
+}
+
+body .ui-table-scrollable-view .ui-widget-header {
+    border: none!important;
+}
+
+
+body .ui-table .ui-editable-column input {
+    font-size: 13px;
+}
+body .ui-table .ui-table-tbody > tr {
+    outline: none;
+}
+body .ui-table .ui-table-tbody > tr.ui-state-highlight {
+    background-color: #ffbf7f!important;
+    color: #000000!important;
+    border-color: #c8c8c8;
+    outline: none;
 }

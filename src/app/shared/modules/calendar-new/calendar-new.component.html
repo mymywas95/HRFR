@@ -1,0 +1,37 @@
+<p-dialog modal="true" [(visible)]="display" responsive="true">
+    <form [formGroup]="profileForm" (ngSubmit)="create()">
+        <div class="ui-g form-group">
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Tên</label><span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="name" required>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Thời gian</label><span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <p-calendar showTime="true" appendTo="body" formControlName="time" required></p-calendar>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="label">
+                    <label>Nội dung</label> <span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="content" required>
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="text-right">
+                <button pButton type="submit" [disabled]="!profileForm.valid" label="Tạo mới"></button>
+                <button pButton type="button" label="Hủy" (click)="display = !display" class="ui-button-secondary"></button>
+            </div>
+        </p-footer>
+    </form>
+</p-dialog>
+<p-growl [(value)]="msgs"></p-growl>

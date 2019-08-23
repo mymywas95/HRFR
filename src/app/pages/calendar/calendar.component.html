@@ -3,14 +3,15 @@
         Lập lịch
     </div>
     <div class="ui-g-12 ui-md-6 ui-lg-6 page-action">
-        <button pButton label="Tạo mới"></button>
+<!--        <button pButton label="Tạo mới"></button>-->
     </div>
 </div>
 <hr>
 <div class="page-content">
     <div class="ui-g">
        <div class="ui-g-12">
-           <p-table [value]="calendarList" [scrollable]="true" scrollHeight="18vh">
+           <p-table [value]="calendarList" [scrollable]="true" scrollHeight="76vh" selectionMode="single"
+                    dataKey="id" [(selection)]="calendarSelected">
                <ng-template pTemplate="header">
                    <tr>
                        <th class="ng-star-inserted">STT</th>
@@ -21,13 +22,43 @@
                    </tr>
                </ng-template>
                <ng-template pTemplate="body" let-calendar let-index="rowIndex" let-data="rowData">
-                   <tr>
+                   <tr [pSelectableRow]="calendar">
                        <td class="text-center">{{index + 1}}</td>
-                       <td *ngFor="let col of cols">
-                           {{calendar[col.field]}}
+                       <td pEditableColumn [title]="calendar['name']">
+                           <p-cellEditor>
+                               <ng-template pTemplate="input">
+                                   <input pInputText type="text" [(ngModel)]="calendar['name']">
+                               </ng-template>
+                               <ng-template pTemplate="output">
+                                   {{calendar['name']}}
+                               </ng-template>
+                           </p-cellEditor>
                        </td>
+                       <td pEditableColumn [title]="calendar['time']">
+                           <p-cellEditor>
+                               <ng-template pTemplate="input">
+                                   <input pInputText type="text" [(ngModel)]="calendar['time']">
+                               </ng-template>
+                               <ng-template pTemplate="output">
+                                   {{calendar['time']}}
+                               </ng-template>
+                           </p-cellEditor>
+                       </td>
+                       <td pEditableColumn [title]="calendar['content']">
+                           <p-cellEditor>
+                               <ng-template pTemplate="input">
+                                   <input pInputText type="text" [(ngModel)]="calendar['content']">
+                               </ng-template>
+                               <ng-template pTemplate="output">
+                                   {{calendar['content']}}
+                               </ng-template>
+                           </p-cellEditor>
+                       </td>
+                       <td class="text-center" [title]="calendar['status']">{{calendar['status']}}</td>
                        <td class="text-center">
-                           <button pButton icon="fa fa-trash" type="button" (click)="deleteCalendar(calendar)" class="ui-button-danger"></button>
+                           <div class="table-button">
+                               <button pButton icon="fa fa-trash" type="button" (click)="deleteCalendar(calendar)" class="ui-button-danger"></button>
+                           </div>
                        </td>
                    </tr>
                </ng-template>
@@ -35,5 +66,4 @@
        </div>
     </div>
 </div>
-
 <was-confirm-dialog-custom></was-confirm-dialog-custom>

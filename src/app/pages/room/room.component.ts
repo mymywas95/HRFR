@@ -6,6 +6,8 @@ import {LanguageHelperService} from '../../shared/services/language-helper.servi
 import {Message} from '../../ui-common/common/message';
 import {ConfirmDialogCustomService} from '../../shared/modules/confirm-dialog-custom/confirm-dialog-custom.service';
 import {RoomGuestComponent} from './room-guest/room-guest.component';
+import {CalendarNewComponent} from '../../shared/modules/calendar-new/calendar-new.component';
+import {EventManagerService} from '../../shared/services/event-manager.service';
 
 @Component({
     selector: 'was-room',
@@ -29,7 +31,12 @@ export class RoomComponent implements OnInit {
     @ViewChild(RoomGuestComponent, {static: false})
     private roomGuest: RoomGuestComponent;
 
-    constructor(private languageHelperService: LanguageHelperService, private confirmDialogCustomService: ConfirmDialogCustomService) {
+    @ViewChild(CalendarNewComponent, {static: false})
+    private calendarNew: CalendarNewComponent;
+
+    constructor(private languageHelperService: LanguageHelperService,
+                private confirmDialogCustomService: ConfirmDialogCustomService,
+                private eventManagerService: EventManagerService) {
     }
 
     ngOnInit() {
@@ -54,7 +61,12 @@ export class RoomComponent implements OnInit {
         this.roomNew.display = true;
     }
 
-    createGuestEmitAction() {
+    createCalendar() {
+        this.calendarNew.display = true;
+    }
+
+    createGuestEmitAction(arrString?) {
+        this.roomGuest.currentArrayString = arrString ? arrString : this.initHeader();
         this.roomGuest.initDefaultForm();
         this.roomGuest.display = true;
     }
@@ -73,12 +85,13 @@ export class RoomComponent implements OnInit {
             };
             this.showToast(data);
         } else {
+            const arrString =  [name, name];
             this.showDetail(true);
             this.showConfirmOk({
                 messageId: 'create_guest_confirm',
-                arrayStringValue: [name],
+                arrayStringValue: arrString,
                 accept: () => {
-                    this.createGuestEmitAction();
+                    this.createGuestEmitAction(arrString);
                 }
             });
         }
@@ -86,11 +99,12 @@ export class RoomComponent implements OnInit {
 
     createGuestAction(value) {
         this.roomGuest.display = false;
+        const arrayString = [value.form.name, value.currentArrayString];
         const data = {
-            messageId: 'create_success',
-            arrayStringValue: [value.name]
+            messageId: 'create_guest_continous_confirm',
+            arrayStringValue: arrayString
         };
-        this.showToast(data);
+        this.showConfirmOk(data);
     }
 
     deleteGuestEmitAction(value) {
@@ -132,7 +146,7 @@ export class RoomComponent implements OnInit {
     }
 
     payEmitAction(value) {
-        const arrayValue = ['tháng 7/2019', 'Phòng cho Thuê - Khu Vườn Lài - phòng số 1']
+        const arrayValue = ['tháng 7/2019', 'Phòng cho Thuê - Khu Vườn Lài - phòng số 1'];
         const data = {
             messageId: 'pay_room',
             arrayStringValue: arrayValue,
@@ -156,18 +170,11 @@ export class RoomComponent implements OnInit {
     }
 
     showConfirmOk(value) {
-        this.confirmAction.trigger(value);
+        this.eventManagerService.broadcast({name: 'showDialogConfirm', data: value});
     }
 
     showToast(value) {
-        const header = this.languageHelperService.getMessageText('message.' + value.messageId + '.title');
-        let message = this.languageHelperService.getMessageText('message.' + value.messageId + '.content');
-        if (value.arrayStringValue) {
-            message = this.confirmDialogCustomService.formatMessageWithData(value.arrayStringValue, message);
-        }
-        const serverity = value.isSuccess && value.isSuccess === false ? 'error' : 'success';
-        this.msgs = [];
-        this.msgs.push({severity: serverity, summary: header, detail: message});
+        this.eventManagerService.broadcast({name: 'showToast', data: value});
     }
 
     stop() {

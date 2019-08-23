@@ -4,6 +4,7 @@
     </div>
     <div class="ui-g-12 ui-md-6 ui-lg-6 page-action">
         <button *ngIf="isDetail" pButton label="Quay lại" class="ui-button-secondary" (click)="back()"></button>
+        <button *ngIf="isDetail" pButton label="Tạo lịch nhắc nhở" class="ui-button-warning" (click)="createCalendar()"></button>
         <button *ngIf="isDetail" pButton label="Ngưng hoạt động" class="ui-button-danger" (click)="stop()"></button>
         <button pButton label="Tạo mới" (click)="create()"></button>
     </div>
@@ -26,6 +27,7 @@
         </div>
     </p-panel>
 </div>
+<was-calendar-new></was-calendar-new>
 <was-room-new (createRoomEvent)="createRoomAction($event)"></was-room-new>
 <was-room-guest (createGuestEvent)="createGuestAction($event)"></was-room-guest>
 <p-growl [(value)]="msgs"></p-growl>

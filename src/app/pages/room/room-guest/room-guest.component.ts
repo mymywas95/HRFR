@@ -1,35 +1,41 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {DatePipe} from '@angular/common';
 
 @Component({
-  selector: 'was-room-guest',
-  templateUrl: './room-guest.component.html',
-  styleUrls: ['./room-guest.component.scss']
+    selector: 'was-room-guest',
+    templateUrl: './room-guest.component.html',
+    styleUrls: ['./room-guest.component.scss']
 })
 export class RoomGuestComponent implements OnInit {
-  display = false;
-  profileForm;
-  @Output() createGuestEvent = new EventEmitter<any>();
-  constructor(private datePipe: DatePipe) { }
+    display = false;
+    profileForm;
+    currentArrayString;
+    @Output() createGuestEvent = new EventEmitter<any>();
 
-  ngOnInit() {
-    this.initDefaultForm();
-  }
+    constructor() {
+    }
 
-  create() {
-    this.createGuestEvent.emit(this.profileForm.value);
-  }
+    ngOnInit() {
+        this.initDefaultForm();
+    }
 
-  initDefaultForm() {
-    const defaultDate = new Date();
-    defaultDate.setFullYear(defaultDate.getFullYear() - 18);
-    this.profileForm = new FormGroup({
-      name: new FormControl(),
-      birthday: new FormControl(defaultDate),
-      identityNumber: new FormControl(),
-      phone: new FormControl(),
-    });
-  }
+    create() {
+      const data = {
+        form: this.profileForm.value,
+        currentArrayString: this.currentArrayString
+      };
+      this.createGuestEvent.emit(data);
+    }
+
+    initDefaultForm() {
+        const defaultDate = new Date();
+        defaultDate.setFullYear(defaultDate.getFullYear() - 18);
+        this.profileForm = new FormGroup({
+            name: new FormControl(),
+            birthday: new FormControl(defaultDate),
+            identityNumber: new FormControl(),
+            phone: new FormControl(),
+        });
+    }
 
 }

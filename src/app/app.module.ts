@@ -12,6 +12,8 @@ import {FooterModule} from './core/master-page/footer/footer.module';
 import {SidebarModule} from './core/master-page/sidebar/sidebar.module';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {ConfirmDialogCustomModule} from './shared/modules/confirm-dialog-custom/confirm-dialog-custom.module';
+import {GrowlModule} from './ui-common/growl/growl';
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/showcase/data/', '.json');
 }
@@ -29,6 +31,8 @@ export function createTranslateLoader(http: HttpClient) {
         NavbarModule,
         FooterModule,
         SidebarModule,
+        ConfirmDialogCustomModule,
+        GrowlModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

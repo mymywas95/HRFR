@@ -8,6 +8,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 export class RoomDetailComponent implements OnInit {
     cars: any[];
     guestList: any[];
+    guestSelected;
     room;
 
     cols: any[];
@@ -43,6 +44,7 @@ export class RoomDetailComponent implements OnInit {
             {id: 5, name: 'Nguyễn Văn E', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
             {id: 6, name: 'Nguyễn Văn F', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
         ];
+        this.guestSelected = this.guestList[0];
     }
 
     initRoomData() {

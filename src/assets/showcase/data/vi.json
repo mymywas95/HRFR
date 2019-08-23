@@ -40,7 +40,13 @@
     },
     "create_guest_confirm": {
       "title": "",
-      "content": "Bạn có muốn thêm khách vào [{0}]?",
+      "content": "Thêm mới [{0}] thành công. \n\nBạn có muốn thêm khách vào [{1}]?",
+      "acceptLabel": "Có",
+      "rejectLabel": "Không"
+    },
+    "create_guest_continous_confirm": {
+      "title": "",
+      "content": "Thêm khách thành công [{0}]. \n\n Bạn có muốn tiếp tục thêm khách vào [{2}]?",
       "acceptLabel": "Có",
       "rejectLabel": "Không"
     },

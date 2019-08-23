@@ -5,6 +5,8 @@ import {CalendarRoutingModule} from './calendar-routing.module';
 import {TableModule} from '../../ui-common/table/table';
 import {ConfirmDialogCustomModule} from '../../shared/modules/confirm-dialog-custom/confirm-dialog-custom.module';
 import {ButtonModule} from '../../ui-common/button/button';
+import {FormsModule} from '@angular/forms';
+import {InputTextModule} from '../../ui-common/inputtext/inputtext';
 
 @NgModule({
     declarations: [CalendarComponent],
@@ -13,7 +15,9 @@ import {ButtonModule} from '../../ui-common/button/button';
         CalendarRoutingModule,
         TableModule,
         ConfirmDialogCustomModule,
-        ButtonModule
+        InputTextModule,
+        ButtonModule,
+        FormsModule
     ]
 })
 export class CalendarModule {
