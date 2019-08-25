@@ -1,6 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import {SelectItem} from '../../../ui-common/common/selectitem';
+import {Dialog} from '../../../ui-common/dialog/dialog';
 
 @Component({
     selector: 'was-room-new',
@@ -13,6 +14,8 @@ export class RoomNewComponent implements OnInit {
     roomType: SelectItem[];
     roomArea: SelectItem[];
     @Output() createRoomEvent = new EventEmitter<any>();
+    @ViewChild(Dialog, {static: false})
+    private dialog: Dialog;
 
     constructor() {
     }

@@ -85,7 +85,7 @@ export class RoomComponent implements OnInit {
             };
             this.showToast(data);
         } else {
-            const arrString =  [name, name];
+            const arrString = [name, name];
             this.showDetail(true);
             this.showConfirmOk({
                 messageId: 'create_guest_confirm',
@@ -195,9 +195,25 @@ export class RoomComponent implements OnInit {
         this.back();
     }
 
+    updateGuestEventAction(data) {
+        const object = {
+            messageId: 'update_confirm',
+            arrayStringValue: [data.header, data.value],
+            accept: () => {
+                this.updateGuestAction(data.header);
+            }
+        };
+        this.showConfirmOk(object);
+    }
+
+    updateGuestAction(lable) {
+        const data = {messageId: 'update_success', arrayStringValue: [lable]};
+        this.showToast(data);
+    }
+
     updateRoomEventAction(data) {
         const object = {
-            messageId: 'update_room_confirm',
+            messageId: 'update_confirm',
             arrayStringValue: [data.label, data.value],
             accept: () => {
                 this.updateRoomAction(data.label);

@@ -50,7 +50,7 @@
       "acceptLabel": "Có",
       "rejectLabel": "Không"
     },
-    "update_room_confirm": {
+    "update_confirm": {
       "title": "",
       "content": "Bạn có muốn cập nhật [{0}] với giá trị là [{1}] không?",
       "acceptLabel": "Có",

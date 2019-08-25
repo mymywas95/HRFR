@@ -1,7 +1,11 @@
 .content-panel-block {
-  min-height: 71vh;
-  max-height: 71vh;
+  min-height: 69vh;
+  max-height: 69vh;
   overflow-y: scroll;
+}
+.dropdown-item {
+  margin-right: 5px;
+  display: inline-block;
 }
 ::ng-deep body .detail {
   .ui-widget-content {
@@ -13,7 +17,16 @@
 :host ::ng-deep {
   .input .input-group-append .input-group-text {
     display: block;
-    min-width: 60px;
+    min-width: 4.5em;
     text-align: right;
+  }
+  p-calendar {
+    width: 100%;
+    .ui-calendar {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
   }
 }

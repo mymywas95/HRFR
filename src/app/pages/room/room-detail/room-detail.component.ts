@@ -16,6 +16,7 @@ export class RoomDetailComponent implements OnInit {
     @Output() deleteGuestEvent = new EventEmitter<any>();
     @Output() createGuestEvent = new EventEmitter();
     @Output() updateRoomEvent = new EventEmitter<any>();
+    @Output() updateGuestEvent = new EventEmitter<any>();
 
     constructor() {
     }
@@ -37,12 +38,12 @@ export class RoomDetailComponent implements OnInit {
             {field: 'identityNumber', header: 'CMND'}
         ];
         this.guestList = [
-            {id: 1, name: 'Nguyễn Văn A', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
-            {id: 2, name: 'Nguyễn Văn B', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
-            {id: 3, name: 'Nguyễn Văn C', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
-            {id: 4, name: 'Nguyễn Văn D', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
-            {id: 5, name: 'Nguyễn Văn E', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
-            {id: 6, name: 'Nguyễn Văn F', birthday: '01/01/1995', phone: '090909090909', identityNumber: '123123123'},
+            {id: 1, name: 'Nguyễn Văn A', birthday: new Date('1995/07/07'), phone: '090909090909', identityNumber: '123123123'},
+            {id: 2, name: 'Nguyễn Văn B', birthday: new Date('1995/07/07'), phone: '090909090909', identityNumber: '123123123'},
+            {id: 3, name: 'Nguyễn Văn C', birthday: new Date('1995/07/07'), phone: '090909090909', identityNumber: '123123123'},
+            {id: 4, name: 'Nguyễn Văn D', birthday: new Date('1995/07/07'), phone: '090909090909', identityNumber: '123123123'},
+            {id: 5, name: 'Nguyễn Văn E', birthday: new Date('1995/07/07'), phone: '090909090909', identityNumber: '123123123'},
+            {id: 6, name: 'Nguyễn Văn F', birthday: new Date('1995/07/07'), phone: '090909090909', identityNumber: '123123123'},
         ];
         this.guestSelected = this.guestList[0];
     }
@@ -63,6 +64,22 @@ export class RoomDetailComponent implements OnInit {
 
     deleteGuest(value) {
         this.deleteGuestEvent.emit(value);
+    }
+
+    onEditComplete(value) {
+        console.log(value);
+        const col = this.cols.find(item => item.field === value.field);
+        if (col) {
+            const data = {
+                header: col.header,
+                value: value.data[value.field]
+            };
+            this.updateGuestEvent.emit(data);
+        }
+    }
+
+    onRowSelect(value) {
+        this.guestSelected = value.data;
     }
 
     pay() {

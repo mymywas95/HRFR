@@ -126,8 +126,9 @@
                 </div>
             </div>
 
-            <p-table [value]="guestList" [scrollable]="true" scrollHeight="18vh" selectionMode="single"
-                     dataKey="id" [(selection)]="guestSelected">
+            <p-table [value]="guestList" [scrollable]="true" scrollHeight="15.8vh" selectionMode="single"
+                     dataKey="id" [(selection)]="guestSelected" (onEditComplete)="onEditComplete($event)"
+            (onRowSelect)="onRowSelect($event)">
                 <ng-template pTemplate="header">
                     <tr>
                         <th class="ng-star-inserted">STT</th>
@@ -140,7 +141,7 @@
                 <ng-template pTemplate="body" let-rowData let-index="rowIndex" let-data="rowData">
                     <tr [pSelectableRow]="rowData">
                         <td class="text-center">{{index + 1}}</td>
-                        <td pEditableColumn [title]="rowData['name']">
+                        <td [pEditableColumn]="rowData" [pEditableColumnField]="'name'"  [title]="rowData['name']">
                             <p-cellEditor>
                                 <ng-template pTemplate="input">
                                     <input pInputText type="text" [(ngModel)]="rowData['name']">
@@ -150,17 +151,17 @@
                                 </ng-template>
                             </p-cellEditor>
                         </td>
-                        <td pEditableColumn [title]="rowData['birthday']">
+                        <td [pEditableColumn]="rowData" pEditableColumnField="birthday" [title]="rowData['birthday']">
                             <p-cellEditor>
                                 <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="rowData['birthday']">
+                                    <p-calendar appendTo="body" [(ngModel)]="rowData['birthday']"></p-calendar>
                                 </ng-template>
                                 <ng-template pTemplate="output">
-                                    {{rowData['birthday']}}
+                                    {{rowData['birthday'] | date: 'dd/MM/yyyy'}}
                                 </ng-template>
                             </p-cellEditor>
                         </td>
-                        <td pEditableColumn [title]="rowData['phone']">
+                        <td [pEditableColumn]="rowData" pEditableColumnField="phone" [title]="rowData['phone']">
                             <p-cellEditor>
                                 <ng-template pTemplate="input">
                                     <input pInputText type="text" [(ngModel)]="rowData['phone']">
@@ -170,7 +171,7 @@
                                 </ng-template>
                             </p-cellEditor>
                         </td>
-                        <td pEditableColumn [title]="rowData['identityNumber']">
+                        <td [pEditableColumn]="rowData" pEditableColumnField="identityNumber" [title]="rowData['identityNumber']">
                             <p-cellEditor>
                                 <ng-template pTemplate="input">
                                     <input pInputText type="text" [(ngModel)]="rowData['identityNumber']">

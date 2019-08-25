@@ -315,8 +315,8 @@ body .ui-button.rounded-btn {
 }
 
 body .ui-button.ui-state-default.ui-button-secondary, body .ui-buttonset.ui-button-secondary > .ui-button.ui-state-default {
-    background-color: #f4f4f4;
-    border-color: #f4f4f4;
+    background-color: #FFFFFF;
+    border-color: #d6d6d6;
     color: #757575;
 }
 

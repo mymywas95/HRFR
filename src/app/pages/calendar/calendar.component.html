@@ -21,43 +21,43 @@
                        <th class="ng-star-inserted">Thao tác</th>
                    </tr>
                </ng-template>
-               <ng-template pTemplate="body" let-calendar let-index="rowIndex" let-data="rowData">
-                   <tr [pSelectableRow]="calendar">
+               <ng-template pTemplate="body" let-rowData let-index="rowIndex" let-rowData="rowData">
+                   <tr [pSelectableRow]="rowData">
                        <td class="text-center">{{index + 1}}</td>
-                       <td pEditableColumn [title]="calendar['name']">
+                       <td [pEditableColumn]="rowData" pEditableColumnField="name" [title]="rowData['name']">
                            <p-cellEditor>
                                <ng-template pTemplate="input">
-                                   <input pInputText type="text" [(ngModel)]="calendar['name']">
+                                   <input pInputText type="text" [(ngModel)]="rowData['name']">
                                </ng-template>
                                <ng-template pTemplate="output">
-                                   {{calendar['name']}}
+                                   {{rowData['name']}}
                                </ng-template>
                            </p-cellEditor>
                        </td>
-                       <td pEditableColumn [title]="calendar['time']">
+                       <td [pEditableColumn]="rowData" pEditableColumnField="time" [title]="rowData['time']">
                            <p-cellEditor>
                                <ng-template pTemplate="input">
-                                   <input pInputText type="text" [(ngModel)]="calendar['time']">
+                                   <input pInputText type="text" [(ngModel)]="rowData['time']">
                                </ng-template>
                                <ng-template pTemplate="output">
-                                   {{calendar['time']}}
+                                   {{rowData['time']}}
                                </ng-template>
                            </p-cellEditor>
                        </td>
-                       <td pEditableColumn [title]="calendar['content']">
+                       <td [pEditableColumn]="rowData" pEditableColumnField="content" [title]="rowData['content']">
                            <p-cellEditor>
                                <ng-template pTemplate="input">
-                                   <input pInputText type="text" [(ngModel)]="calendar['content']">
+                                   <input pInputText type="text" [(ngModel)]="rowData['content']">
                                </ng-template>
                                <ng-template pTemplate="output">
-                                   {{calendar['content']}}
+                                   {{rowData['content']}}
                                </ng-template>
                            </p-cellEditor>
                        </td>
-                       <td class="text-center" [title]="calendar['status']">{{calendar['status']}}</td>
+                       <td class="text-center" [title]="rowData['status']"><span class="status">{{rowData['status']}}</span></td>
                        <td class="text-center">
                            <div class="table-button">
-                               <button pButton icon="fa fa-trash" type="button" (click)="deleteCalendar(calendar)" class="ui-button-danger"></button>
+                               <button pButton icon="fa fa-trash" type="button" (click)="deleteCalendar(rowData)" class="ui-button-danger"></button>
                            </div>
                        </td>
                    </tr>
