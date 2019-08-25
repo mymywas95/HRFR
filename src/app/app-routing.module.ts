@@ -9,6 +9,8 @@ import {NgModule} from '@angular/core';
             {path: 'home', loadChildren: './pages/home/home.module#HomeModule'},
             {path: 'room', loadChildren: './pages/room/room.module#RoomModule'},
             {path: 'calendar', loadChildren: './pages/calendar/calendar.module#CalendarModule'},
+            {path: 'statistic', loadChildren: './pages/statistic/statistic.module#StatisticModule'},
+            {path: 'account', loadChildren: './pages/account/account.module#AccountModule'},
         ], {scrollPositionRestoration: 'enabled'})
     ],
     exports: [RouterModule]
