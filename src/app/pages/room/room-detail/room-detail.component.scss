@@ -21,11 +21,11 @@
     list-style: none;
     float: left;
     &:first-child {
-      width: 50%;
+      width: 35%;
       line-height: 2em;
     }
     &:nth-child(2) {
-      width: 50%;
+      width: 65%;
       text-align: center;
     }
   }

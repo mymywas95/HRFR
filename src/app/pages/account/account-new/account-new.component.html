@@ -1,0 +1,44 @@
+<p-dialog modal="true" [(visible)]="display" responsive="true">
+    <form [formGroup]="profileForm" (ngSubmit)="create()">
+        <div class="ui-g form-group content-block">
+            <div class="ui-g-12 ui-noPadBot">
+                <div class="label">
+                    <label>Họ và tên</label><span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="name" required>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-noPadBot">
+                <div class="label">
+                    <label>Tên đăng nhập</label><span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText formControlName="username" required>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-noPadBot">
+                <div class="label">
+                    <label>Mật khẩu</label><span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <input pInputText type="password" formControlName="password" required>
+                </div>
+            </div>
+            <div class="ui-g-12 ui-noPadBot">
+                <div class="label">
+                    <label>Vai trò</label><span class="required">(*)</span>
+                </div>
+                <div class="input">
+                    <p-dropdown appendTo="body" ngClass="full" [options]="roles" formControlName="role"></p-dropdown>
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="text-right">
+                <button pButton type="submit" [disabled]="!profileForm.valid" label="Tạo mới"></button>
+                <button pButton type="button" label="Hủy" (click)="display = !display" class="ui-button-secondary"></button>
+            </div>
+        </p-footer>
+    </form>
+</p-dialog>

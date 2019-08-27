@@ -102,7 +102,15 @@ export class RoomComponent implements OnInit {
         const arrayString = [value.form.name, value.currentArrayString];
         const data = {
             messageId: 'create_guest_continous_confirm',
-            arrayStringValue: arrayString
+            arrayStringValue: arrayString,
+            accept: () => {
+                this.createGuestEmitAction();
+            },
+            reject: () => {
+                this.showToast({
+                    messageId: 'create_process_done'
+                });
+            }
         };
         this.showConfirmOk(data);
     }

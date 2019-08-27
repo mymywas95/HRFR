@@ -3,7 +3,7 @@
         Quản lý tài khoản
     </div>
     <div class="ui-g-12 ui-md-6 ui-lg-6 page-action">
-        <button pButton label="Tạo mới"></button>
+        <button pButton label="Tạo mới" (click)="create()"></button>
     </div>
 </div>
 <hr>
@@ -68,4 +68,4 @@
         </div>
     </div>
 </div>
-<was-confirm-dialog-custom></was-confirm-dialog-custom>
+<was-account-new (createAccountEvent)="createAccountAction($event)"></was-account-new>

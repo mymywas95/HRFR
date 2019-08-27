@@ -6,11 +6,12 @@ import {TableModule} from '../../ui-common/table/table';
 import {DialogModule} from '../../ui-common/dialog/dialog';
 import {ButtonModule} from '../../ui-common/button/button';
 import {InputTextModule} from '../../ui-common/inputtext/inputtext';
-import {ConfirmDialogCustomModule} from '../../shared/modules/confirm-dialog-custom/confirm-dialog-custom.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AccountNewComponent} from './account-new/account-new.component';
+import {DropdownModule} from '../../ui-common/dropdown/dropdown';
 
 @NgModule({
-    declarations: [AccountComponent],
+    declarations: [AccountComponent, AccountNewComponent],
     imports: [
         CommonModule,
         AccountRoutingModule,
@@ -18,8 +19,10 @@ import {FormsModule} from '@angular/forms';
         DialogModule,
         ButtonModule,
         InputTextModule,
-        ConfirmDialogCustomModule,
-        FormsModule
+        DialogModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DropdownModule
     ]
 })
 export class AccountModule {

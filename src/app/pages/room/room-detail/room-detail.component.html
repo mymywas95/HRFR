@@ -80,7 +80,7 @@
                         <label>Số nước cũ</label>
                     </div>
                     <div class="input">
-                        <input pInputText type="number" [(ngModel)]="room.waterOldNumber"
+                        <input pInputText class="append" type="number" [(ngModel)]="room.waterOldNumber"
                                (change)="update('waterOldNumber', 'Số nước cũ', $event.target.value)">
                         <div class="input-group-append">
                             <span class="input-group-text">Khối</span>
@@ -92,7 +92,7 @@
                         <label>Số nước hiện tại</label>
                     </div>
                     <div class="input">
-                        <input pInputText type="number" [(ngModel)]="room.waterNumber"
+                        <input pInputText class="append" type="number" [(ngModel)]="room.waterNumber"
                                (change)="update('waterNumber', 'Số nước hiện tại', $event.target.value)">
                         <div class="input-group-append">
                             <span class="input-group-text">Khối</span>

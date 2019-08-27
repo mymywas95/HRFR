@@ -34,6 +34,10 @@
       "title": "",
       "content": "Đã tạo thành công [{0}]"
     },
+    "create_process_done": {
+      "title": "",
+      "content": "Tiến trình tạo mới hoàn tất."
+    },
     "update_success": {
       "title": "",
       "content": "Đã cập nhật [{0}] thành công"
@@ -46,7 +50,7 @@
     },
     "create_guest_continous_confirm": {
       "title": "",
-      "content": "Thêm khách thành công [{0}]. \n\n Bạn có muốn tiếp tục thêm khách vào [{2}]?",
+      "content": "Thêm khách thành công [{0}]. \n\n Bạn có muốn tiếp tục thêm khách vào [{1}]?",
       "acceptLabel": "Có",
       "rejectLabel": "Không"
     },
