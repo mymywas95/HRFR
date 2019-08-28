@@ -19,6 +19,7 @@ import {DialogModule} from '../../ui-common/dialog/dialog';
 import {GrowlModule} from '../../ui-common/growl/growl';
 import {RoomGuestComponent} from './room-guest/room-guest.component';
 import {CalendarNewModule} from '../../shared/modules/calendar-new/calendar-new.module';
+import {FocusTrapModule} from '../../ui-common/focustrap/focustrap';
 
 @NgModule({
     declarations: [RoomComponent, RoomItemComponent, RoomDetailComponent, RoomNewComponent, RoomGuestComponent],
@@ -39,7 +40,8 @@ import {CalendarNewModule} from '../../shared/modules/calendar-new/calendar-new.
         ReactiveFormsModule,
         GrowlModule,
         DropdownModule,
-        CalendarNewModule
+        CalendarNewModule,
+        FocusTrapModule
     ],
     providers: []
 })

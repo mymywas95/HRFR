@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {SelectItem} from '../../ui-common/common/selectitem';
 import {ConfirmDialogCustomComponent} from '../../shared/modules/confirm-dialog-custom/confirm-dialog-custom.component';
 import {RoomNewComponent} from './room-new/room-new.component';
@@ -8,17 +8,20 @@ import {ConfirmDialogCustomService} from '../../shared/modules/confirm-dialog-cu
 import {RoomGuestComponent} from './room-guest/room-guest.component';
 import {CalendarNewComponent} from '../../shared/modules/calendar-new/calendar-new.component';
 import {EventManagerService} from '../../shared/services/event-manager.service';
+import {RoomItemComponent} from './room-item/room-item.component';
 
 @Component({
     selector: 'was-room',
     templateUrl: './room.component.html',
     styleUrls: ['./room.component.scss']
 })
-export class RoomComponent implements OnInit {
+export class RoomComponent implements OnInit, AfterViewInit {
     roomTypeList: SelectItem[];
     roomList: SelectItem[];
+    zoneList: SelectItem[];
     roomTypeSelected: string;
     roomSelected: string;
+    zoneSelected: string;
     isDetail = false;
     msgs: Message[] = [];
 
@@ -33,6 +36,9 @@ export class RoomComponent implements OnInit {
 
     @ViewChild(CalendarNewComponent, {static: false})
     private calendarNew: CalendarNewComponent;
+
+    @ViewChild(RoomItemComponent, {static: false})
+    private roomItemComponent: RoomItemComponent;
 
     constructor(private languageHelperService: LanguageHelperService,
                 private confirmDialogCustomService: ConfirmDialogCustomService,
@@ -50,10 +56,54 @@ export class RoomComponent implements OnInit {
             {label: 'Khu FPT', value: 'FPT'}
         ];
         this.roomSelected = this.roomList[0].value;
+        this.zoneList = [
+            {label: 'Quận 12', value: 'Q12'},
+            {label: 'Quận 9', value: 'Q9'}
+        ];
+        this.zoneSelected = this.zoneList[0].value;
+    }
+
+    ngAfterViewInit() {
+        this.changeDetail(this.roomTypeList[0].value);
     }
 
     back() {
         this.isDetail = false;
+    }
+
+    changeDetail(option) {
+        const type = this.roomTypeSelected;
+        const room = this.roomSelected;
+        const house = this.zoneSelected;
+        const listRoom = [];
+        if (option === 'type') {
+            option = type;
+        }
+        switch (option) {
+            case 'room': {
+                for (let i = 0; i <= 10; i++) {
+                    listRoom.push({
+                        name: 'Phòng số ' + (i + 1) + ' ' + room,
+                        price: 200,
+                        guestNumber: 5,
+                        status: 1
+                    });
+                }
+                break;
+            }
+            case 'house': {
+                for (let i = 0; i <= 10; i++) {
+                    listRoom.push({
+                        name: 'Nhà số ' + (i + 1) + ' ' + house,
+                        price: 200,
+                        guestNumber: 5,
+                        status: 1
+                    });
+                }
+                break;
+            }
+        }
+        this.roomItemComponent.initData(listRoom);
     }
 
     create() {

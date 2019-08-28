@@ -15,11 +15,15 @@
     <div class="ui-g">
         <div class="ui-g-12 ui-md-6 ui-lg-6 ui-noPadLef">
             <div class="dropdown-item">
-                <p-dropdown [options]="roomTypeList" [(ngModel)]="roomTypeSelected"></p-dropdown>
+                <p-dropdown [options]="roomTypeList" [(ngModel)]="roomTypeSelected" (onChange)="changeDetail('type')"></p-dropdown>
             </div>
             <div class="dropdown-item" *ngIf="roomTypeSelected === 'room'">
                 <p-dropdown [options]="roomList"
-                            [(ngModel)]="roomSelected"></p-dropdown>
+                            [(ngModel)]="roomSelected" (onChange)="changeDetail('room')"></p-dropdown>
+            </div>
+            <div class="dropdown-item" *ngIf="roomTypeSelected === 'house'">
+                <p-dropdown [options]="zoneList"
+                            [(ngModel)]="zoneSelected"(onChange)="changeDetail('house')" ></p-dropdown>
             </div>
         </div>
         <div class="ui-g-12 ui-md-6 ui-lg-6">
