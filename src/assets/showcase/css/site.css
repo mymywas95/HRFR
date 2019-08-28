@@ -14,6 +14,12 @@ html {
     font-weight: bold;
 }
 
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url(../../showcase/fonts/HelveticaNeue.otf);
+    font-weight: bold;
+}
+
 body {
     margin: 0px;
     min-height: 100%;
@@ -1426,4 +1432,11 @@ p-footer {
     margin-top: 10px;
     display: inline-block;
     width: 100%;
+}
+
+
+.dashboard .overview-box .overview-box-title {
+    font-size: 1.2em;
+    width: 75%;
+    height: 2.5em;
 }
