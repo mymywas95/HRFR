@@ -3,7 +3,9 @@
 .img-block {
   @include ratio-wrappter(16, 9);
 }
-
+.room-img-block {
+  @include ratio-wrappter(1, 1);
+}
 .item-block {
   border: 1px solid #cccccc;
   padding: 5px;

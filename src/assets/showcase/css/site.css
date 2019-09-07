@@ -34,6 +34,18 @@ body {
     background: #EEF2F6;
 }
 
+@media screen and (min-width: 1366px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    body {
+        font-size: 18px;
+    }
+}
+
 body .ui-panel .ui-panel-titlebar .ui-panel-title {
     font-size: 1.3em;
 }
@@ -1439,4 +1451,58 @@ p-footer {
     font-size: 1.2em;
     width: 75%;
     height: 2.5em;
+}
+
+.input-block input, .input-block-append {
+    border: none;
+    border-radius: 0;
+    line-height: 1.4em;
+    font-size: 1em;
+    padding: 5px;
+}
+
+.input-block-append {
+    display: inline-block;
+    color: #9fa3a7;
+}
+
+.input-block .ui-float-label > label {
+    font-size: 1em!important;
+}
+
+.input-block .ui-float-label input {
+    width: 70%;
+}
+
+.input-block .ui-float-label.no-append input {
+    width: 100%;
+}
+
+.input-block .input-block-append {
+    text-align: right;
+    width: 30%;
+}
+
+.input-block {
+    margin-top: 1em;
+    border-bottom: 1px solid #ced4da;
+}
+
+.ui-panel-content .ui-tabview .ui-tabview-panel {
+    border: none;
+}
+
+.ui-tabview .ui-tabview-nav li, body .ui-tabview.ui-tabview-top .ui-tabview-nav li {
+    float: right;
+    border-bottom: none;
+}
+
+body .ui-tabview.ui-tabview-top .ui-tabview-nav {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+.input-block {
+    margin-bottom: 40px;
 }

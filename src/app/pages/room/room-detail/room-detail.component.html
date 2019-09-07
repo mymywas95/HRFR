@@ -1,116 +1,81 @@
 <div class="ui-g">
-    <div class="ui-g-12 ui-md-9 ui-lg-9">
+    <div class="ui-g-12 ui-md-6 ui-lg-6">
         <div class="card card-w-title">
-            <h1>Thông tin phòng</h1>
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-6 ui-lg-6">
+                    <h1>Thông tin dịch vụ</h1>
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-6 text-right">
+                    <button pButton label="Tạo mới" (click)="createGuest()"></button>
+                </div>
+            </div>
             <div class="ui-g form-group">
-                <div class="ui-g-12 ui-md-4 ui-lg-4">
-                    <div class="label">
-                        <label>Tiền phòng</label>
-                    </div>
-                    <div class="input">
-                        <input pInputText class="append" type="number" [(ngModel)]="room.roomPrice"
-                               (change)="update('roomPrice', 'Tiền phòng', $event.target.value)">
-                        <div class="input-group-append">
-                            <span class="input-group-text">.000VND</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui-g-12 ui-md-4 ui-lg-4">
-                    <div class="label">
-                        <label>Tiền điện</label>
-                    </div>
-                    <div class="input">
-                        <input pInputText class="append" type="number" [(ngModel)]="room.electricPrice"
-                               (change)="update('electricPrice', 'Tiền điện', $event.target.value)">
-                        <div class="input-group-append">
-                            <span class="input-group-text">.000VND</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui-g-12 ui-md-4 ui-lg-4">
-                    <div class="label">
-                        <label>Tiền nước</label>
-                    </div>
-                    <div class="input">
-                        <input pInputText class="append" type="number" [(ngModel)]="room.waterNumber"
-                               (change)="update('waterNumber', 'Tiền nước', $event.target.value)">
-                        <div class="input-group-append">
-                            <span class="input-group-text">.000VND</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui-g-12 ui-md-4 ui-lg-4">
-                    <div class="label">
-                        <label>Tiền rác</label>
-                    </div>
-                    <div class="input">
-                        <input pInputText class="append" type="number" [(ngModel)]="room.trashPrice"
-                               (change)="update('trashPrice', 'Tiền rác', $event.target.value)">
-                        <div class="input-group-append">
-                            <span class="input-group-text">.000VND</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui-g-12 ui-md-4 ui-lg-4">
-                    <div class="label">
-                        <label>Số điện cũ</label>
-                    </div>
-                    <div class="input">
-                        <input pInputText class="append" type="number" [(ngModel)]="room.electricOldNumber"
-                               (change)="update('electricOldNumber', 'Số điện cũ', $event.target.value)">
-                        <div class="input-group-append">
-                            <span class="input-group-text">KW</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui-g-12 ui-md-4 ui-lg-4">
-                    <div class="label">
-                        <label>Số điện hiện tại</label>
-                    </div>
-                    <div class="input">
-                        <input pInputText class="append" type="number" [(ngModel)]="room.electricNumber"
-                               (change)="update('electricNumber', 'Số điện hiện tại', $event.target.value)">
-                        <div class="input-group-append">
-                            <span class="input-group-text">KW</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui-g-12 ui-md-4 ui-lg-4">
-                    <div class="label">
-                        <label>Số nước cũ</label>
-                    </div>
-                    <div class="input">
-                        <input pInputText class="append" type="number" [(ngModel)]="room.waterOldNumber"
-                               (change)="update('waterOldNumber', 'Số nước cũ', $event.target.value)">
-                        <div class="input-group-append">
-                            <span class="input-group-text">Khối</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui-g-12 ui-md-4 ui-lg-4">
-                    <div class="label">
-                        <label>Số nước hiện tại</label>
-                    </div>
-                    <div class="input">
-                        <input pInputText class="append" type="number" [(ngModel)]="room.waterNumber"
-                               (change)="update('waterNumber', 'Số nước hiện tại', $event.target.value)">
-                        <div class="input-group-append">
-                            <span class="input-group-text">Khối</span>
-                        </div>
-                    </div>
+                <div class="ui-g-12">
+                    <p-table [value]="services" [scrollable]="true" scrollHeight="15.8vh" selectionMode="single"
+                             dataKey="id" [(selection)]="serviceSelected"
+                             (onEditComplete)="onEditComplete($event)"
+                             (onRowSelect)="onRowSelect($event)">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th class="ng-star-inserted">STT</th>
+                                <th *ngFor="let col of serviceCols">
+                                    {{col.header}}
+                                </th>
+                                <th class="ng-star-inserted">Thao tác</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-index="rowIndex" let-data="rowData">
+                            <tr [pSelectableRow]="rowData">
+                                <td class="text-center">{{index + 1}}</td>
+                                <td class="text-center" [title]="rowData['label']">{{rowData['label']}}</td>
+                                <td [pEditableColumn]="rowData" pEditableColumnField="value"
+                                    [title]="rowData['value']">
+                                    <p-cellEditor>
+                                        <ng-template pTemplate="input">
+                                            <input pInputText type="text" [(ngModel)]="rowData['value']">
+                                        </ng-template>
+                                        <ng-template pTemplate="output">
+                                            {{rowData['value']}}
+                                        </ng-template>
+                                    </p-cellEditor>
+                                </td>
+                                <td class="text-center" [title]="rowData['unit']">{{rowData['unit']}}</td>
+                                <td class="text-center">
+                                    <div class="table-button">
+                                        <button pButton icon="fa fa-trash" type="button"
+                                                (click)="deleteGuest(rowData)"
+                                                class="ui-button-danger"></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
                 </div>
             </div>
         </div>
     </div>
-    <div class="ui-g-12 ui-md-3 ui-lg-3">
+    <div class="ui-g-12 ui-md-6 ui-lg-6">
         <div class="card card-w-title">
-            <h1>Tình trạng phòng</h1>
+            <h1>Thông tin phòng</h1>
             <div class="ui-g form-group">
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
-                   <ul class="none-pay-list">
-                       <li>7/2019</li>
-                       <li><button pButton label="Chưa thanh toán" (click)="pay()"></button></li>
-                   </ul>
+                    <div class="input-block no-append">
+                        <div class="ui-float-label">
+                            <input pInputText class="append" type="text" [(ngModel)]="room.name"
+                                   id="name"
+                                   (change)="update('acreage', 'Diện tích', $event.target.value)">
+                            <label for="name">Tên</label>
+                        </div>
+                    </div>
+                    <div class="input-block">
+                        <div class="ui-float-label">
+                            <input pInputText class="append" type="number" [(ngModel)]="room.acreage"
+                                   id="acreage"
+                                   (change)="update('acreage', 'Diện tích', $event.target.value)">
+                            <label for="acreage">Diện tích</label>
+                            <span class="input-block-append">m2</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -128,7 +93,7 @@
 
             <p-table [value]="guestList" [scrollable]="true" scrollHeight="15.8vh" selectionMode="single"
                      dataKey="id" [(selection)]="guestSelected" (onEditComplete)="onEditComplete($event)"
-            (onRowSelect)="onRowSelect($event)">
+                     (onRowSelect)="onRowSelect($event)">
                 <ng-template pTemplate="header">
                     <tr>
                         <th class="ng-star-inserted">STT</th>
@@ -141,7 +106,8 @@
                 <ng-template pTemplate="body" let-rowData let-index="rowIndex" let-data="rowData">
                     <tr [pSelectableRow]="rowData">
                         <td class="text-center">{{index + 1}}</td>
-                        <td [pEditableColumn]="rowData" [pEditableColumnField]="'name'"  [title]="rowData['name']">
+                        <td [pEditableColumn]="rowData" [pEditableColumnField]="'name'"
+                            [title]="rowData['name']">
                             <p-cellEditor>
                                 <ng-template pTemplate="input">
                                     <input pInputText type="text" [(ngModel)]="rowData['name']">
@@ -151,7 +117,19 @@
                                 </ng-template>
                             </p-cellEditor>
                         </td>
-                        <td [pEditableColumn]="rowData" pEditableColumnField="birthday" [title]="rowData['birthday']">
+                        <td [pEditableColumn]="rowData" [pEditableColumnField]="'sex'"
+                            [title]="rowData['sex']">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData['sex']">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData['sex']}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="rowData" pEditableColumnField="birthday"
+                            [title]="rowData['birthday']">
                             <p-cellEditor>
                                 <ng-template pTemplate="input">
                                     <p-calendar appendTo="body" [(ngModel)]="rowData['birthday']"></p-calendar>
@@ -171,7 +149,19 @@
                                 </ng-template>
                             </p-cellEditor>
                         </td>
-                        <td [pEditableColumn]="rowData" pEditableColumnField="identityNumber" [title]="rowData['identityNumber']">
+                        <td [pEditableColumn]="rowData" [pEditableColumnField]="'job'"
+                            [title]="rowData['job']">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData['job']">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData['job']}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="rowData" pEditableColumnField="identityNumber"
+                            [title]="rowData['identityNumber']">
                             <p-cellEditor>
                                 <ng-template pTemplate="input">
                                     <input pInputText type="text" [(ngModel)]="rowData['identityNumber']">
@@ -181,9 +171,32 @@
                                 </ng-template>
                             </p-cellEditor>
                         </td>
+                        <td [pEditableColumn]="rowData" pEditableColumnField="date"
+                            [title]="rowData['date']">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <p-calendar appendTo="body" [(ngModel)]="rowData['date']"></p-calendar>
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData['date'] | date: 'dd/MM/yyyy'}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                        <td [pEditableColumn]="rowData" [pEditableColumnField]="'household'"
+                            [title]="rowData['household']">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData['household']">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData['household']}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
                         <td class="text-center">
                             <div class="table-button">
-                                <button pButton icon="fa fa-trash" type="button" (click)="deleteGuest(rowData)" class="ui-button-danger"></button>
+                                <button pButton icon="fa fa-trash" type="button" (click)="deleteGuest(rowData)"
+                                        class="ui-button-danger"></button>
                             </div>
                         </td>
                     </tr>

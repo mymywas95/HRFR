@@ -9,9 +9,12 @@ export class RoomDetailComponent implements OnInit {
     cars: any[];
     guestList: any[];
     guestSelected;
+    serviceSelected;
     room;
-
+    display = false;
     cols: any[];
+    serviceCols: any[];
+    services: any[];
     @Output() payEvent = new EventEmitter<any>();
     @Output() deleteGuestEvent = new EventEmitter<any>();
     @Output() createGuestEvent = new EventEmitter();
@@ -24,6 +27,7 @@ export class RoomDetailComponent implements OnInit {
     ngOnInit() {
         this.initGuestData();
         this.initRoomData();
+        this.initServiceData();
     }
 
     createGuest() {
@@ -33,33 +37,75 @@ export class RoomDetailComponent implements OnInit {
     initGuestData() {
         this.cols = [
             {field: 'name', header: 'Họ và tên'},
+            {field: 'sex', header: 'Giới tính'},
             {field: 'birthday', header: 'Ngày sinh'},
             {field: 'phone', header: 'SĐT'},
-            {field: 'identityNumber', header: 'CMND'}
+            {field: 'job', header: 'Nghề nghiệp'},
+            {field: 'identityNumber', header: 'CMND'},
+            {field: 'date', header: 'Ngày cấp'},
+            {field: 'household', header: 'Hộ khẩu'},
         ];
         this.guestList = [
-            {id: 1, name: 'Nguyễn Văn A', birthday: new Date('1995/07/07'), phone: '090909090909', identityNumber: '123123123'},
-            {id: 2, name: 'Nguyễn Văn B', birthday: new Date('1995/07/07'), phone: '090909090909', identityNumber: '123123123'},
-            {id: 3, name: 'Nguyễn Văn C', birthday: new Date('1995/07/07'), phone: '090909090909', identityNumber: '123123123'},
-            {id: 4, name: 'Nguyễn Văn D', birthday: new Date('1995/07/07'), phone: '090909090909', identityNumber: '123123123'},
-            {id: 5, name: 'Nguyễn Văn E', birthday: new Date('1995/07/07'), phone: '090909090909', identityNumber: '123123123'},
-            {id: 6, name: 'Nguyễn Văn F', birthday: new Date('1995/07/07'), phone: '090909090909', identityNumber: '123123123'},
+            {
+                id: 1,
+                name: 'Nguyễn Văn A',
+                sex: 'nam',
+                birthday: new Date('1995/07/07'),
+                phone: '090909090909',
+                job: 'sinh viên',
+                identityNumber: '123123123',
+                date: new Date('2012/07/07'),
+                household: 'Cà màu'
+            },
+            {
+                id: 2,
+                name: 'Nguyễn Văn B',
+                sex: 'nam',
+                birthday: new Date('1995/07/07'),
+                phone: '090909090909',
+                job: 'sinh viên',
+                identityNumber: '123123123',
+                date: new Date('2012/07/07'),
+                household: 'Cà màu'
+            },
+            {
+                id: 3,
+                name: 'Nguyễn Văn C',
+                sex: 'nam',
+                birthday: new Date('1995/07/07'),
+                phone: '090909090909',
+                job: 'sinh viên',
+                identityNumber: '123123123',
+                date: new Date('2012/07/07'),
+                household: 'Cà màu'
+            },
+
         ];
         this.guestSelected = this.guestList[0];
     }
 
     initRoomData() {
         this.room = {
-            roomPrice: 0,
-            waterPrice: 0,
-            electricPrice: 0,
-            trashPrice: 0,
-            carPrice: 0,
-            waterNumber: 0,
-            waterOldNumber: 0,
-            electricNumber: 0,
-            electricOldNumber: 0
+            acreage: 20,
+            name: 'Phòng số 1'
         };
+    }
+
+    initServiceData() {
+        this.serviceCols = [
+            {header: 'Loại hình dịch vụ'},
+            {header: 'Giá cả'},
+            {header: 'Đơn vị'}
+        ];
+        this.services = [
+            {id: 1, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000},
+            {id: 2, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000},
+            {id: 3, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000},
+            {id: 4, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000},
+            {id: 5, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000},
+            {id: 6, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000},
+        ];
+        this.serviceSelected = this.services[0];
     }
 
     deleteGuest(value) {
@@ -67,7 +113,6 @@ export class RoomDetailComponent implements OnInit {
     }
 
     onEditComplete(value) {
-        console.log(value);
         const col = this.cols.find(item => item.field === value.field);
         if (col) {
             const data = {

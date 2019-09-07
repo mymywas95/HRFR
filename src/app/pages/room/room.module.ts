@@ -17,12 +17,28 @@ import {ConfirmDialogCustomModule} from '../../shared/modules/confirm-dialog-cus
 import {RoomNewComponent} from './room-new/room-new.component';
 import {DialogModule} from '../../ui-common/dialog/dialog';
 import {GrowlModule} from '../../ui-common/growl/growl';
-import {RoomGuestComponent} from './room-guest/room-guest.component';
 import {CalendarNewModule} from '../../shared/modules/calendar-new/calendar-new.module';
 import {FocusTrapModule} from '../../ui-common/focustrap/focustrap';
+import {RoomDeviceComponent} from './room-device/room-device.component';
+import {GalleriaModule} from '../../ui-common/galleria/galleria';
+import {RoomDeviceNewComponent} from './room-device-new/room-device-new.component';
+import {RoomHistoryComponent} from './room-history/room-history.component';
+import {RoomGuestNewComponent} from './room-guest-new/room-guest-new.component';
+import { RoomGuestComponent } from './room-guest/room-guest.component';
+import {FileUploadModule} from '../../ui-common/fileupload/fileupload';
 
 @NgModule({
-    declarations: [RoomComponent, RoomItemComponent, RoomDetailComponent, RoomNewComponent, RoomGuestComponent],
+    declarations: [
+        RoomComponent,
+        RoomItemComponent,
+        RoomDetailComponent,
+        RoomNewComponent,
+        RoomGuestNewComponent,
+        RoomDeviceComponent,
+        RoomDeviceNewComponent,
+        RoomHistoryComponent,
+        RoomGuestComponent
+    ],
     imports: [
         CommonModule,
         FormsModule,
@@ -41,7 +57,9 @@ import {FocusTrapModule} from '../../ui-common/focustrap/focustrap';
         GrowlModule,
         DropdownModule,
         CalendarNewModule,
-        FocusTrapModule
+        FocusTrapModule,
+        GalleriaModule,
+        FileUploadModule
     ],
     providers: []
 })

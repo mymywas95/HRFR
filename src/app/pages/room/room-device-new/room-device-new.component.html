@@ -1,0 +1,36 @@
+<p-dialog modal="true" [(visible)]="display" responsive="true" #dialog>
+    <form [formGroup]="deviceForm" (ngSubmit)="create()">
+        <div class="ui-g form-group">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <input pInputText formControlName="name" id="name" required>
+                        <label for="name">Tên</label>
+                    </div>
+                </div>
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <input pInputText formControlName="description" id="description" required>
+                        <label for="description">Mô tả</label>
+                    </div>
+                </div>
+                <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" required formControlName="image"
+                              (onSelect)="onSelect($event)"
+                              multiple="multiple" accept="image/*" maxFileSize="1000000"
+                              chooseLabel="Chọn ảnh" [showUploadButton]="false" [showCancelButton]="false">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="uploadedFiles.length">
+                            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>
+        </div>
+        <p-footer>
+            <div class="text-right">
+                <button pButton type="submit" [disabled]="!deviceForm.valid" label="Tạo mới"></button>
+                <button pButton type="button" label="Hủy" (click)="display = !display" class="ui-button-secondary"></button>
+            </div>
+        </p-footer>
+    </form>
+</p-dialog>

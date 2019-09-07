@@ -17,13 +17,9 @@
             <div class="dropdown-item">
                 <p-dropdown [options]="roomTypeList" [(ngModel)]="roomTypeSelected" (onChange)="changeDetail('type')"></p-dropdown>
             </div>
-            <div class="dropdown-item" *ngIf="roomTypeSelected === 'room'">
+            <div class="dropdown-item" *ngIf="roomList.length > 0">
                 <p-dropdown [options]="roomList"
                             [(ngModel)]="roomSelected" (onChange)="changeDetail('room')"></p-dropdown>
-            </div>
-            <div class="dropdown-item" *ngIf="roomTypeSelected === 'house'">
-                <p-dropdown [options]="zoneList"
-                            [(ngModel)]="zoneSelected"(onChange)="changeDetail('house')" ></p-dropdown>
             </div>
         </div>
         <div class="ui-g-12 ui-md-6 ui-lg-6">
@@ -33,15 +29,26 @@
     <p-panel [header]="initHeader()" [ngClass]="{'detail': isDetail}">
         <div class="content-panel-block">
             <was-room-item *ngIf="!isDetail" (showDetailEvent)="showDetail($event)"></was-room-item>
-            <was-room-detail (payEvent)="payEmitAction($event)" (deleteGuestEvent)="deleteGuestEmitAction($event)"
-                             (createGuestEvent)="createGuestEmitAction()"
-                             (updateRoomEvent)="updateRoomEventAction($event)"
-                             (updateGuestEvent)="updateGuestEventAction($event)" *ngIf="isDetail"></was-room-detail>
+            <p-tabView *ngIf="isDetail">
+                <p-tabPanel header="Tổng quan">
+                    <was-room-detail (payEvent)="payEmitAction($event)" (deleteGuestEvent)="deleteGuestEmitAction($event)"
+                                     (createGuestEvent)="createGuestEmitAction()"
+                                     (updateRoomEvent)="updateRoomEventAction($event)"
+                                     (updateGuestEvent)="updateGuestEventAction($event)"></was-room-detail>
+                </p-tabPanel>
+                <p-tabPanel header="Quản lý thiết bị">
+                    <was-room-device (createDeviceEvent)="createDeviceEmit()" (deleteDeviceEvent)="deleteDeviceEmit($event)"></was-room-device>
+                </p-tabPanel>
+                <p-tabPanel header="Lịch sử thanh toán">
+                    <was-room-history> </was-room-history>
+                </p-tabPanel>
+            </p-tabView>
         </div>
     </p-panel>
 </div>
 <was-calendar-new></was-calendar-new>
 <was-room-new (createRoomEvent)="createRoomAction($event)"></was-room-new>
-<was-room-guest (createGuestEvent)="createGuestAction($event)"></was-room-guest>
+<was-room-guest-new (createGuestEvent)="createGuestAction($event)"></was-room-guest-new>
+<was-room-device-new (createDeviceEvent)="createDeviceEventEmit($event)"></was-room-device-new>
 <p-growl [(value)]="msgs"></p-growl>
 <was-confirm-dialog-custom></was-confirm-dialog-custom>

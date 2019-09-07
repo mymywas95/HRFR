@@ -5,10 +5,13 @@ import {RoomNewComponent} from './room-new/room-new.component';
 import {LanguageHelperService} from '../../shared/services/language-helper.service';
 import {Message} from '../../ui-common/common/message';
 import {ConfirmDialogCustomService} from '../../shared/modules/confirm-dialog-custom/confirm-dialog-custom.service';
-import {RoomGuestComponent} from './room-guest/room-guest.component';
 import {CalendarNewComponent} from '../../shared/modules/calendar-new/calendar-new.component';
 import {EventManagerService} from '../../shared/services/event-manager.service';
 import {RoomItemComponent} from './room-item/room-item.component';
+import {RoomDetailComponent} from './room-detail/room-detail.component';
+import {RoomService} from './services/room.service';
+import {RoomGuestNewComponent} from './room-guest-new/room-guest-new.component';
+import {RoomDeviceNewComponent} from './room-device-new/room-device-new.component';
 
 @Component({
     selector: 'was-room',
@@ -18,10 +21,8 @@ import {RoomItemComponent} from './room-item/room-item.component';
 export class RoomComponent implements OnInit, AfterViewInit {
     roomTypeList: SelectItem[];
     roomList: SelectItem[];
-    zoneList: SelectItem[];
     roomTypeSelected: string;
     roomSelected: string;
-    zoneSelected: string;
     isDetail = false;
     msgs: Message[] = [];
 
@@ -31,8 +32,8 @@ export class RoomComponent implements OnInit, AfterViewInit {
     @ViewChild(RoomNewComponent, {static: false})
     private roomNew: RoomNewComponent;
 
-    @ViewChild(RoomGuestComponent, {static: false})
-    private roomGuest: RoomGuestComponent;
+    @ViewChild(RoomGuestNewComponent, {static: false})
+    private roomGuest: RoomGuestNewComponent;
 
     @ViewChild(CalendarNewComponent, {static: false})
     private calendarNew: CalendarNewComponent;
@@ -40,27 +41,26 @@ export class RoomComponent implements OnInit, AfterViewInit {
     @ViewChild(RoomItemComponent, {static: false})
     private roomItemComponent: RoomItemComponent;
 
+    @ViewChild(RoomDetailComponent, {static: false})
+    private roomDetailComponent: RoomDetailComponent;
+
+    @ViewChild(RoomDeviceNewComponent, {static: false})
+    private roomDeviceNewComponent: RoomDeviceNewComponent;
+
     constructor(private languageHelperService: LanguageHelperService,
                 private confirmDialogCustomService: ConfirmDialogCustomService,
-                private eventManagerService: EventManagerService) {
+                private eventManagerService: EventManagerService,
+                private roomService: RoomService) {
     }
 
     ngOnInit() {
         this.roomTypeList = [
-            {label: 'Phòng cho Thuê', value: 'room'},
-            {label: 'Nhà cho Thuê', value: 'house'}
+            {label: 'Khu dãy trọ', value: 'room'},
+            {label: 'Khu nhà cho Thuê', value: 'house'},
+            {label: 'Khu Tòa nhà', value: 'building'},
         ];
         this.roomTypeSelected = this.roomTypeList[0].value;
-        this.roomList = [
-            {label: 'Khu Vườn Lài', value: 'lai'},
-            {label: 'Khu FPT', value: 'FPT'}
-        ];
-        this.roomSelected = this.roomList[0].value;
-        this.zoneList = [
-            {label: 'Quận 12', value: 'Q12'},
-            {label: 'Quận 9', value: 'Q9'}
-        ];
-        this.zoneSelected = this.zoneList[0].value;
+        this.initRoomList(this.roomTypeSelected);
     }
 
     ngAfterViewInit() {
@@ -68,16 +68,17 @@ export class RoomComponent implements OnInit, AfterViewInit {
     }
 
     back() {
-        this.isDetail = false;
+        this.showDetail(false);
     }
 
     changeDetail(option) {
+        this.showDetail(false);
         const type = this.roomTypeSelected;
         const room = this.roomSelected;
-        const house = this.zoneSelected;
         const listRoom = [];
         if (option === 'type') {
             option = type;
+            this.initRoomList(type);
         }
         switch (option) {
             case 'room': {
@@ -94,7 +95,18 @@ export class RoomComponent implements OnInit, AfterViewInit {
             case 'house': {
                 for (let i = 0; i <= 10; i++) {
                     listRoom.push({
-                        name: 'Nhà số ' + (i + 1) + ' ' + house,
+                        name: 'Nhà số ' + (i + 1) + ' ' + room,
+                        price: 200,
+                        guestNumber: 5,
+                        status: 1
+                    });
+                }
+                break;
+            }
+            case 'building': {
+                for (let i = 0; i <= 10; i++) {
+                    listRoom.push({
+                        name: 'Tòa số ' + (i + 1) + ' ' + room,
                         price: 200,
                         guestNumber: 5,
                         status: 1
@@ -113,6 +125,21 @@ export class RoomComponent implements OnInit, AfterViewInit {
 
     createCalendar() {
         this.calendarNew.display = true;
+    }
+
+    createDeviceEmit() {
+        this.roomDeviceNewComponent.display = true;
+        this.roomDeviceNewComponent.initDefaultForm();
+    }
+
+    createDeviceEventEmit(value) {
+        this.roomDeviceNewComponent.display = false;
+        const name = value.name;
+        const data = {
+            messageId: 'create_success',
+            arrayStringValue: [name]
+        };
+        this.showToast(data);
     }
 
     createGuestEmitAction(arrString?) {
@@ -185,6 +212,31 @@ export class RoomComponent implements OnInit, AfterViewInit {
         this.showToast(data);
     }
 
+    deleteDeviceEmit(value) {
+        const arrString = [value.name];
+        const data = {
+            messageId: 'delete_confirm',
+            arrayStringValue: arrString,
+            accept: () => {
+                this.deleteDeviceAction(arrString);
+            }
+        };
+        this.showConfirmOk(data);
+    }
+
+    deleteDeviceAction(arrString) {
+        const data = {
+            messageId: 'delete_success',
+            arrayStringValue: arrString
+        };
+        this.showToast(data);
+    }
+
+    goDetail(value) {
+        this.roomItemComponent.display = value;
+        this.roomDetailComponent.display = !value;
+    }
+
 
     initHeader() {
         if (this.roomTypeSelected) {
@@ -201,6 +253,35 @@ export class RoomComponent implements OnInit, AfterViewInit {
         } else {
             return '';
         }
+    }
+
+    initRoomList(type) {
+        switch (type) {
+            case 'room' : {
+                this.roomList = [
+                    {label: 'Dãy trọ vườn lài', value: 'lai'},
+                    {label: 'Dãy trọ FPT', value: 'FPT'}
+                ];
+                break;
+            }
+            case 'house' : {
+                this.roomList = [
+                    {label: 'Quận 12', value: 'Q12'},
+                    {label: 'Quận 9', value: 'Q9'}
+                ];
+                break;
+            }
+            case 'building' : {
+                this.roomList = [
+                    {label: 'Tòa nhà A', value: 'BuildingA'},
+                    {label: 'Tòa nhà B', value: 'BuildingB'}
+                ];
+                break;
+            }
+        }
+
+
+        this.roomSelected = this.roomList[0].value;
     }
 
     payEmitAction(value) {
@@ -224,7 +305,9 @@ export class RoomComponent implements OnInit, AfterViewInit {
     }
 
     showDetail(data) {
-        this.isDetail = true;
+        this.isDetail = data;
+        // this.roomItemComponent.display = !data;
+        // this.roomDetailComponent.display = data;
     }
 
     showConfirmOk(value) {
