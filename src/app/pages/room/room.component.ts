@@ -106,7 +106,7 @@ export class RoomComponent implements OnInit, AfterViewInit {
             case 'building': {
                 for (let i = 0; i <= 10; i++) {
                     listRoom.push({
-                        name: 'Tòa số ' + (i + 1) + ' ' + room,
+                        name: 'Tầng ' + (i + 1) + ' ' + room,
                         price: 200,
                         guestNumber: 5,
                         status: 1
