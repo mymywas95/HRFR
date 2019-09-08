@@ -84,7 +84,7 @@ export class RoomComponent implements OnInit, AfterViewInit {
             case 'room': {
                 for (let i = 0; i <= 10; i++) {
                     listRoom.push({
-                        name: 'Phòng số ' + (i + 1) + ' ' + room,
+                        name: 'Phòng số ' + (i + 1) + ' ',
                         price: 200,
                         guestNumber: 5,
                         status: 1
@@ -95,7 +95,7 @@ export class RoomComponent implements OnInit, AfterViewInit {
             case 'house': {
                 for (let i = 0; i <= 10; i++) {
                     listRoom.push({
-                        name: 'Nhà số ' + (i + 1) + ' ' + room,
+                        name: 'Nhà số ' + (i + 1) + ' ',
                         price: 200,
                         guestNumber: 5,
                         status: 1
@@ -106,7 +106,7 @@ export class RoomComponent implements OnInit, AfterViewInit {
             case 'building': {
                 for (let i = 0; i <= 10; i++) {
                     listRoom.push({
-                        name: 'Tầng ' + (i + 1) + ' ' + room,
+                        name: 'Tầng ' + (i + 1),
                         price: 200,
                         guestNumber: 5,
                         status: 1
