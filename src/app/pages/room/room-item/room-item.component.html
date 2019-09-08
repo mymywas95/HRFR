@@ -1,4 +1,31 @@
 <p-tabView *ngIf="items.length > 0 && display">
+    <p-tabPanel header="Danh sách">
+        <div class="ui-g" *ngIf="items.length > 0 && display">
+            <div class="ui-g-12 ui-md-4 ui-lg-3" *ngFor="let item of items">
+                <div class="item-block" (click)="showDetail(item)">
+                    <div class="img-block">
+                        <div class="img-item">
+                            <img src="../../../../assets/showcase/images/house.jpg">
+                        </div>
+                    </div>
+                    <div class="item-detail-block">
+                        <div class="name">
+                            {{item.name}}
+                        </div>
+                        <div class="description room-count">
+                            {{item.price}}$/{{item.guestNumber}} người
+                        </div>
+                        <div class="description room-address">
+                            {{item.status === 1 ? 'Đã thanh toán' : 'Chưa thanh toán'}}
+                        </div>
+                    </div>
+                    <div class="item-detail-action">
+                        <div>Xem chi tiết</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-tabPanel>
     <p-tabPanel header="Thông tin">
         <div class="ui-g">
             <div class="ui-g-12 ui-md-4 ui-lg-3">
@@ -43,33 +70,6 @@
                                (change)="update('acreage', 'Diện tích', $event.target.value)">
                         <label for="acreage">Diện tích</label>
                         <span class="input-block-append">m2</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </p-tabPanel>
-    <p-tabPanel header="danh sách">
-        <div class="ui-g" *ngIf="items.length > 0 && display">
-            <div class="ui-g-12 ui-md-4 ui-lg-3" *ngFor="let item of items">
-                <div class="item-block" (click)="showDetail(item)">
-                    <div class="img-block">
-                        <div class="img-item">
-                            <img src="../../../../assets/showcase/images/house.jpg">
-                        </div>
-                    </div>
-                    <div class="item-detail-block">
-                        <div class="name">
-                            {{item.name}}
-                        </div>
-                        <div class="description room-count">
-                            {{item.price}}$/{{item.guestNumber}} người
-                        </div>
-                        <div class="description room-address">
-                            {{item.status === 1 ? 'Đã thanh toán' : 'Chưa thanh toán'}}
-                        </div>
-                    </div>
-                    <div class="item-detail-action">
-                        <div>Xem chi tiết</div>
                     </div>
                 </div>
             </div>
