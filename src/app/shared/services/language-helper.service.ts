@@ -50,7 +50,7 @@ export class LanguageHelperService {
 
   private getPageTitle(routeSnapshot: ActivatedRouteSnapshot) {
     let title: string = (routeSnapshot.data
-        && routeSnapshot.data.pageTitle) ? routeSnapshot.data.pageTitle : 'HRFL';
+        && routeSnapshot.data.pageTitle) ? routeSnapshot.data.pageTitle : 'Quản lý phòng trọ và nhà thuê';
     if (routeSnapshot.firstChild) {
       title = this.getPageTitle(routeSnapshot.firstChild) || title;
     }
