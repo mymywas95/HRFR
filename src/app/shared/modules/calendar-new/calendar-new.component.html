@@ -2,27 +2,23 @@
     <form [formGroup]="profileForm" (ngSubmit)="create()">
         <div class="ui-g form-group">
             <div class="ui-g-12">
-                <div class="label">
-                    <label>Tên</label><span class="required">(*)</span>
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <input pInputText formControlName="name" id="name" required>
+                        <label for="name">Tên <span class="required">(*)</span></label>
+                    </div>
                 </div>
-                <div class="input">
-                    <input pInputText formControlName="name" required>
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <p-calendar id="time" showTime="true" appendTo="body" formControlName="time" required dateFormat="dd/mm/yy"></p-calendar>
+                        <label for="time">Thời gian <span class="required">(*)</span></label>
+                    </div>
                 </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="label">
-                    <label>Thời gian</label><span class="required">(*)</span>
-                </div>
-                <div class="input">
-                    <p-calendar showTime="true" appendTo="body" formControlName="time" required dateFormat="dd/mm/yy"></p-calendar>
-                </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="label">
-                    <label>Nội dung</label> <span class="required">(*)</span>
-                </div>
-                <div class="input">
-                    <input pInputText formControlName="content" required>
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <input pInputText formControlName="content" id="content" required>
+                        <label for="content">Nội dung <span class="required">(*)</span></label>
+                    </div>
                 </div>
             </div>
         </div>

@@ -68,7 +68,7 @@ export class RoomComponent implements OnInit, AfterViewInit {
     }
 
     back() {
-        this.showDetail(false);
+        this.changeDetail('room');
     }
 
     changeDetail(option) {
@@ -115,7 +115,9 @@ export class RoomComponent implements OnInit, AfterViewInit {
                 break;
             }
         }
-        this.roomItemComponent.initData(listRoom);
+        if (this.roomItemComponent) {
+            this.roomItemComponent.initData(listRoom);
+        }
     }
 
     create() {
