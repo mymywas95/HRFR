@@ -29,4 +29,17 @@
       }
     }
   }
+
+  .black-dropdown {
+    .ui-dropdown {
+      border-bottom-color: #000000;
+      &:hover, &:active, &:focus{
+        border-bottom-color: #000000;
+      }
+      .ui-dropdown-trigger, .ui-dropdown-label{
+        color: #000000;
+        border-color: #000000;
+      }
+    }
+  }
 }

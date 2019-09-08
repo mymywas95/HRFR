@@ -20,32 +20,6 @@ html {
     font-weight: bold;
 }
 
-body {
-    margin: 0px;
-    min-height: 100%;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
-    font-weight: normal;
-    color: #333c40;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    background: #EEF2F6;
-}
-
-@media screen and (min-width: 1366px) {
-    body {
-        font-size: 16px;
-    }
-}
-
-@media screen and (min-width: 1920px) {
-    body {
-        font-size: 18px;
-    }
-}
-
 body .ui-panel .ui-panel-titlebar .ui-panel-title {
     font-size: 1.3em;
 }
@@ -1505,4 +1479,27 @@ body .ui-tabview.ui-tabview-top .ui-tabview-nav {
 
 .input-block {
     margin-bottom: 40px;
+}
+
+
+
+body .ui-dropdown, body .ui-dropdown:hover, body .ui-dropdown:not(.ui-state-disabled):hover, body .ui-dropdown:not(.ui-state-disabled).ui-state-focus {
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #a6a6a6;
+    box-shadow: none;
+}
+
+body .form-group .ui-dropdown, body .form-group .ui-dropdown:hover, body .form-group .ui-dropdown:active,
+body .form-group .ui-dropdown:not(.ui-state-disabled):hover, body .form-group .ui-dropdown:not(.ui-state-disabled).ui-state-focus{
+    border: none;
+    border-bottom: none;
+}
+
+.ui-dropdown label.ui-dropdown-label {
+    background: transparent;
+}
+
+body .ui-dropdown .ui-dropdown-trigger {
+    background: transparent;
 }

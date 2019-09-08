@@ -1,0 +1,47 @@
+$font: 16px;
+$font-medium: $font + 4;
+body {
+  margin: 0px;
+  min-height: 100%;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
+  font-weight: normal;
+  color: #333c40;
+  -webkit-font-smoothing: antialiased;
+  font-size: $font;
+  background: #EEF2F6;
+}
+
+#layout-sidebar .layout-menu > a span {
+  color: #34393a;
+  font-size: $font - 1;
+  margin: -2px 0px 0px 30px;
+  display: inline-block;
+}
+
+body .ui-inputtext {
+  font-size: $font;
+}
+
+body .ui-widget {
+  font-size: $font;
+}
+
+@media screen and (min-width: 1920px) {
+  body {
+    font-size: $font-medium!important;
+  }
+  #layout-sidebar .layout-menu > a span {
+    font-size: $font-medium!important;
+  }
+  body .ui-inputtext {
+    font-size: $font-medium!important;
+  }
+
+  body .ui-widget {
+    font-size: $font-medium!important;
+  }
+}
+

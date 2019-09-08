@@ -15,10 +15,10 @@
     <div class="ui-g">
         <div class="ui-g-12 ui-md-6 ui-lg-6 ui-noPadLef">
             <div class="dropdown-item">
-                <p-dropdown [options]="roomTypeList" [(ngModel)]="roomTypeSelected" (onChange)="changeDetail('type')"></p-dropdown>
+                <p-dropdown ngClass="black-dropdown" [options]="roomTypeList" [(ngModel)]="roomTypeSelected" (onChange)="changeDetail('type')"></p-dropdown>
             </div>
             <div class="dropdown-item" *ngIf="roomList.length > 0">
-                <p-dropdown [options]="roomList"
+                <p-dropdown ngClass="black-dropdown" [options]="roomList"
                             [(ngModel)]="roomSelected" (onChange)="changeDetail('room')"></p-dropdown>
             </div>
         </div>
@@ -30,17 +30,17 @@
         <div class="content-panel-block">
             <was-room-item *ngIf="!isDetail" (showDetailEvent)="showDetail($event)"></was-room-item>
             <p-tabView *ngIf="isDetail">
+                <p-tabPanel header="Lịch sử thanh toán">
+                    <was-room-history> </was-room-history>
+                </p-tabPanel>
+                <p-tabPanel header="Quản lý thiết bị">
+                    <was-room-device (createDeviceEvent)="createDeviceEmit()" (deleteDeviceEvent)="deleteDeviceEmit($event)"></was-room-device>
+                </p-tabPanel>
                 <p-tabPanel header="Tổng quan">
                     <was-room-detail (payEvent)="payEmitAction($event)" (deleteGuestEvent)="deleteGuestEmitAction($event)"
                                      (createGuestEvent)="createGuestEmitAction()"
                                      (updateRoomEvent)="updateRoomEventAction($event)"
                                      (updateGuestEvent)="updateGuestEventAction($event)"></was-room-detail>
-                </p-tabPanel>
-                <p-tabPanel header="Quản lý thiết bị">
-                    <was-room-device (createDeviceEvent)="createDeviceEmit()" (deleteDeviceEvent)="deleteDeviceEmit($event)"></was-room-device>
-                </p-tabPanel>
-                <p-tabPanel header="Lịch sử thanh toán">
-                    <was-room-history> </was-room-history>
                 </p-tabPanel>
             </p-tabView>
         </div>

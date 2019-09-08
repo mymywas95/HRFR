@@ -14,7 +14,7 @@
                         <label for="description">Mô tả</label>
                     </div>
                 </div>
-                <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" required formControlName="image"
+                <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" required
                               (onSelect)="onSelect($event)"
                               multiple="multiple" accept="image/*" maxFileSize="1000000"
                               chooseLabel="Chọn ảnh" [showUploadButton]="false" [showCancelButton]="false">

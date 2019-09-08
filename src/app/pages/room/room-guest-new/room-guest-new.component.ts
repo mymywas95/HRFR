@@ -35,6 +35,10 @@ export class RoomGuestNewComponent implements OnInit {
             birthday: new FormControl(defaultDate),
             identityNumber: new FormControl(),
             phone: new FormControl(),
+            sex: new FormControl(),
+            job: new FormControl(),
+            identityDate: new FormControl(new Date()),
+            household: new FormControl(),
         });
     }
 

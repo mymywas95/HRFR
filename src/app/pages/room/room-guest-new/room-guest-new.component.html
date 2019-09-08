@@ -2,36 +2,55 @@
     <form [formGroup]="profileForm" (ngSubmit)="create()">
         <div class="ui-g form-group">
             <div class="ui-g-12">
-                <div class="label">
-                    <label>Tên</label><span class="required">(*)</span>
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <input pInputText formControlName="name" id="name" required>
+                        <label for="name">Tên <span class="required">(*)</span></label>
+                    </div>
                 </div>
-                <div class="input">
-                    <input pInputText formControlName="name" required>
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <input pInputText formControlName="name" id="sex" required>
+                        <label for="sex">Giới tính <span class="required">(*)</span></label>
+                    </div>
                 </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="label">
-                    <label>Ngày sinh</label><span class="required">(*)</span>
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <p-calendar id="birthday" appendTo="body" formControlName="birthday" required dateFormat="dd/mm/yy"></p-calendar>
+                        <label for="birthday">Ngày sinh <span class="required">(*)</span></label>
+                    </div>
                 </div>
-                <div class="input">
-                    <p-calendar appendTo="body" formControlName="birthday" required dateFormat="dd/mm/yy"></p-calendar>
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <input pInputText formControlName="phone" id="phone" required>
+                        <label for="phone">SĐT <span class="required">(*)</span></label>
+                    </div>
                 </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="label">
-                    <label>CMND</label> <span class="required">(*)</span>
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <input pInputText formControlName="job" id="job" required>
+                        <label for="job">Nghề nghiệp <span class="required">(*)</span></label>
+                    </div>
                 </div>
-                <div class="input">
-                    <input pInputText formControlName="identityNumber" required>
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <input pInputText formControlName="identityNumber" id="identityNumber" required>
+                        <label for="identityNumber">CMND <span class="required">(*)</span></label>
+                    </div>
                 </div>
-            </div>
-            <div class="ui-g-12">
-                <div class="label">
-                    <label>SĐT</label> <span class="required">(*)</span>
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <p-calendar id="identityDate" appendTo="body" formControlName="identityDate" required dateFormat="dd/mm/yy"></p-calendar>
+                        <label for="identityDate">Ngày cấp <span class="required">(*)</span></label>
+                    </div>
                 </div>
-                <div class="input">
-                    <input pInputText formControlName="phone" required>
+                <div class="input-block">
+                    <div class="ui-float-label no-append">
+                        <input pInputText formControlName="household" id="household" required>
+                        <label for="household">Hộ khẩu <span class="required">(*)</span></label>
+                    </div>
                 </div>
+
             </div>
         </div>
         <p-footer>
