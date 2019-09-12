@@ -5,3 +5,17 @@
 #layout-sidebar .layout-menu > a span {
   margin: -2px 0px 0px 15px;
 }
+
+:host ::ng-deep {
+  #layout-sidebar .layout-menu > div.room-tree {
+    padding-top: 0;
+    padding-bottom: 0;
+    .ui-widget-content {
+      border: none;
+    }
+    .ui-tree, .ui-tree-container {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}

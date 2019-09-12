@@ -12,20 +12,6 @@
 </div>
 <hr>
 <div class="page-content">
-    <div class="ui-g">
-        <div class="ui-g-12 ui-md-6 ui-lg-6 ui-noPadLef">
-            <div class="dropdown-item">
-                <p-dropdown ngClass="black-dropdown" [options]="roomTypeList" [(ngModel)]="roomTypeSelected" (onChange)="changeDetail('type')"></p-dropdown>
-            </div>
-            <div class="dropdown-item" *ngIf="roomList.length > 0">
-                <p-dropdown ngClass="black-dropdown" [options]="roomList"
-                            [(ngModel)]="roomSelected" (onChange)="changeDetail('room')"></p-dropdown>
-            </div>
-        </div>
-        <div class="ui-g-12 ui-md-6 ui-lg-6">
-
-        </div>
-    </div>
     <p-panel [header]="initHeader()" [ngClass]="{'detail': isDetail}">
         <div class="content-panel-block">
             <was-room-item *ngIf="!isDetail" (showDetailEvent)="showDetail($event)"></was-room-item>

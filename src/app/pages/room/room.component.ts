@@ -54,17 +54,40 @@ export class RoomComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        this.roomTypeList = [
-            {label: 'Khu dãy trọ', value: 'room'},
-            {label: 'Khu nhà cho Thuê', value: 'house'},
-            {label: 'Khu Tòa nhà', value: 'building'},
-        ];
-        this.roomTypeSelected = this.roomTypeList[0].value;
-        this.initRoomList(this.roomTypeSelected);
+     this.eventManagerService.subscribe('sendRoomSelected', (value) => {
+         this.initSelectedRoom(value.data);
+     });
     }
 
     ngAfterViewInit() {
-        this.changeDetail(this.roomTypeList[0].value);
+        // this.changeDetail(this.roomTypeList[0].value);
+    }
+
+    initSelectedRoom(data) {
+        let parentName = '';
+        const node = data.node;
+        const midName = node.label;
+        if (node.parent) {
+            let currentParent = node.parent;
+            do {
+                // tslint:disable: prefer-const
+                let currentParentName = currentParent.label;
+                if (parentName !== '') {
+                    if (currentParentName !== '') {
+                        parentName = currentParentName + ' - ' + parentName;
+                    }
+                } else {
+                    parentName = currentParentName;
+                }
+                if (currentParent.parent) {
+                    currentParent =  currentParent.parent;
+                } else {
+                    currentParent = undefined;
+                }
+            } while ( currentParent !== undefined);
+        }
+        const path = parentName !== '' ? parentName  + ' - ' + midName : midName;
+        alert(path);
     }
 
     back() {

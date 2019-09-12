@@ -4,10 +4,14 @@
             <i class="menu-icon fa fa-fw fa-home"></i>
             <span>Trang chủ</span>
         </a>
-        <a [routerLink]="['/room']">
+        <a (click)="showRoom()">
             <i class="menu-icon fa fa-fw fa-list-alt"></i>
             <span>Quản lý phòng và nhà cho thuê</span>
         </a>
+        <div class="room-tree" *ngIf="showListRoom">
+            <p-tree [value]="filesTree2" selectionMode="single" [(selection)]="selectedFile"
+                    (onNodeSelect)="nodeSelect($event)"></p-tree>
+        </div>
         <a [routerLink]="['/account']">
             <i class="menu-icon fa fa-fw fa-users"></i>
             <span>Quản lý tài khoản</span>
