@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {CurrencyPipe, DatePipe} from '@angular/common';
 
 @Component({
     selector: 'was-room-detail',
@@ -21,7 +22,7 @@ export class RoomDetailComponent implements OnInit {
     @Output() updateRoomEvent = new EventEmitter<any>();
     @Output() updateGuestEvent = new EventEmitter<any>();
 
-    constructor() {
+    constructor(private datePipe: DatePipe, currencyPipe: CurrencyPipe) {
     }
 
     ngOnInit() {
@@ -87,23 +88,23 @@ export class RoomDetailComponent implements OnInit {
     initRoomData() {
         this.room = {
             acreage: 20,
-            name: 'Phòng số 1'
+            name: 'Phòng số 1',
+            dateCollection: '10/09/2019',
+            totalPrice: '1,000'
         };
     }
 
     initServiceData() {
         this.serviceCols = [
             {header: 'Loại hình dịch vụ'},
-            {header: 'Giá cả'},
-            {header: 'Đơn vị'}
+            {header: 'Ghi chú'},
+            {header: 'Đơn vị'},
+            {header: 'Số lượng'},
+            {header: 'Đơn giá'},
+            {header: 'Tổng giá'},
         ];
         this.services = [
-            {id: 1, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000},
-            {id: 2, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000},
-            {id: 3, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000},
-            {id: 4, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000},
-            {id: 5, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000},
-            {id: 6, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000},
+            {id: 1, label: 'Tiền điện', unit: '.000VNĐ', key: 'electricPrice', value: 1000, note: '', amount: 1},
         ];
         this.serviceSelected = this.services[0];
     }
@@ -137,6 +138,14 @@ export class RoomDetailComponent implements OnInit {
             label,
             value
         });
+    }
+
+    calculateTotalPrice(rowdata) {
+        if (rowdata.amount && rowdata.value) {
+            return rowdata.amount * rowdata.value;
+        } else {
+            return 0;
+        }
     }
 
 }

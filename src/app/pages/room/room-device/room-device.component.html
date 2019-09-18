@@ -73,6 +73,80 @@
             </div>
         </div>
     </div>
+    <div class="ui-g-12">
+        <div class="card card-w-title">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-6 ui-lg-6">
+                    <h1>Thông tin dịch vụ</h1>
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-6 text-right">
+                    <button pButton label="Tạo mới" (click)="create()"></button>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <p-table [value]="deviceList" [scrollable]="true" scrollHeight="15.8vh" selectionMode="single"
+                             dataKey="id" [(selection)]="deviceSelected" (onEditComplete)="onEditComplete($event)"
+                             (onRowSelect)="onRowSelect($event)">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th class="ng-star-inserted">STT</th>
+                                <th *ngFor="let col of cols">
+                                    {{col.header}}
+                                </th>
+                                <th class="ng-star-inserted">Thao tác</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-index="rowIndex" let-data="rowData">
+                            <tr [pSelectableRow]="rowData">
+                                <td class="text-center">{{index + 1}}</td>
+                                <td [pEditableColumn]="rowData" [pEditableColumnField]="'name'"
+                                    [title]="rowData['name']">
+                                    <p-cellEditor>
+                                        <ng-template pTemplate="input">
+                                            <input pInputText type="text" [(ngModel)]="rowData['name']">
+                                        </ng-template>
+                                        <ng-template pTemplate="output">
+                                            {{rowData['name']}}
+                                        </ng-template>
+                                    </p-cellEditor>
+                                </td>
+                                <td>
+                                    <div class="img-container" (click)="showImage()">
+                                        <div class="img-block">
+                                            <div class="img-item">
+                                                <img [src]="rowData['image']">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{rowData['status']}}
+                                </td>
+                                <td [pEditableColumn]="rowData" pEditableColumnField="description"
+                                    [title]="rowData['description']">
+                                    <p-cellEditor>
+                                        <ng-template pTemplate="input">
+                                            <input pInputText type="text" [(ngModel)]="rowData['description']">
+                                        </ng-template>
+                                        <ng-template pTemplate="output">
+                                            {{rowData['description']}}
+                                        </ng-template>
+                                    </p-cellEditor>
+                                </td>
+                                <td class="text-center">
+                                    <div class="table-button">
+                                        <button pButton icon="fa fa-trash" type="button" (click)="deleteDevice(rowData)"
+                                                class="ui-button-danger"></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

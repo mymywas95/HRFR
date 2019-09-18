@@ -12,10 +12,10 @@
 </div>
 <hr>
 <div class="page-content">
-    <p-panel [header]="initHeader()" [ngClass]="{'detail': isDetail}">
+    <p-panel [header]="header" [ngClass]="{'detail': isDetail}">
         <div class="content-panel-block">
-            <was-room-item *ngIf="!isDetail" (showDetailEvent)="showDetail($event)"></was-room-item>
-            <p-tabView *ngIf="isDetail">
+
+            <p-tabView>
                 <p-tabPanel header="Lịch sử thanh toán">
                     <was-room-history> </was-room-history>
                 </p-tabPanel>
@@ -27,6 +27,9 @@
                                      (createGuestEvent)="createGuestEmitAction()"
                                      (updateRoomEvent)="updateRoomEventAction($event)"
                                      (updateGuestEvent)="updateGuestEventAction($event)"></was-room-detail>
+                </p-tabPanel>
+                <p-tabPanel header="Danh sách phòng">
+                    <was-room-item (showDetailEvent)="showDetail($event)"></was-room-item>
                 </p-tabPanel>
             </p-tabView>
         </div>

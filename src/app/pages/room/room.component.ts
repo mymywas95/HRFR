@@ -25,6 +25,7 @@ export class RoomComponent implements OnInit, AfterViewInit {
     roomSelected: string;
     isDetail = false;
     msgs: Message[] = [];
+    header;
 
     @ViewChild(ConfirmDialogCustomComponent, {static: false})
     private confirmAction: ConfirmDialogCustomComponent;
@@ -87,7 +88,7 @@ export class RoomComponent implements OnInit, AfterViewInit {
             } while ( currentParent !== undefined);
         }
         const path = parentName !== '' ? parentName  + ' - ' + midName : midName;
-        alert(path);
+        this.header = path;
     }
 
     back() {

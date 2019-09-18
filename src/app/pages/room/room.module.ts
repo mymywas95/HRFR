@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, CurrencyPipe, DatePipe} from '@angular/common';
 import {RoomComponent} from './room.component';
 import {RoomRoutingModule} from './room-routing.module';
 import {PanelModule} from '../../ui-common/panel/panel';
@@ -61,7 +61,7 @@ import {FileUploadModule} from '../../ui-common/fileupload/fileupload';
         GalleriaModule,
         FileUploadModule
     ],
-    providers: []
+    providers: [DatePipe, CurrencyPipe]
 })
 export class RoomModule {
 }
