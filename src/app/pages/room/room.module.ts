@@ -26,6 +26,7 @@ import {RoomHistoryComponent} from './room-history/room-history.component';
 import {RoomGuestNewComponent} from './room-guest-new/room-guest-new.component';
 import { RoomGuestComponent } from './room-guest/room-guest.component';
 import {FileUploadModule} from '../../ui-common/fileupload/fileupload';
+import {AccordionModule} from '../../ui-common/accordion/accordion';
 
 @NgModule({
     declarations: [
@@ -59,7 +60,8 @@ import {FileUploadModule} from '../../ui-common/fileupload/fileupload';
         CalendarNewModule,
         FocusTrapModule,
         GalleriaModule,
-        FileUploadModule
+        FileUploadModule,
+        AccordionModule
     ],
     providers: [DatePipe, CurrencyPipe]
 })

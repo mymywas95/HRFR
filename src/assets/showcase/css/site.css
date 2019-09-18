@@ -1462,6 +1462,10 @@ p-footer {
     border-bottom: 1px solid #ced4da;
 }
 
+.input-block.no-border {
+    border-bottom: none;
+}
+
 .ui-panel-content .ui-tabview .ui-tabview-panel {
     border: none;
 }

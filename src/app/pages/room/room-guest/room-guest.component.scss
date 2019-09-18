@@ -1,0 +1,10 @@
+@import "../../../../assets/showcase/styles/mixin";
+
+.img-block {
+  @include ratio-wrappter(16, 9);
+}
+:host ::ng-deep {
+  .ui-dropdown {
+    width: 100%;
+  }
+}
