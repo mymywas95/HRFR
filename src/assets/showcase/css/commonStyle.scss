@@ -29,6 +29,10 @@ body .ui-widget {
   font-size: $font;
 }
 
+body .ui-accordion .ui-accordion-header {
+  font-size: $font + 2;
+}
+
 @media screen and (min-width: 3840px) {
   body {
     font-size: $font-medium!important;
