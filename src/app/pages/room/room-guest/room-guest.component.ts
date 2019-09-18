@@ -11,6 +11,7 @@ export class RoomGuestComponent implements OnInit {
     guestSelected;
     cols;
     sexs: SelectItem[];
+    sexSelected;
     @Output() createGuestEvent = new EventEmitter();
     @Output() updateGuestEvent = new EventEmitter<any>();
     @Output() deleteGuestEvent = new EventEmitter<any>();
@@ -24,6 +25,7 @@ export class RoomGuestComponent implements OnInit {
             {label: 'Nam', value: null},
             {label: 'Nữ', value: null},
         ];
+        this.sexSelected = this.sexs[0];
     }
 
     createGuest() {

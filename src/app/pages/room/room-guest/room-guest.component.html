@@ -7,85 +7,111 @@
         </div>
     </div>
     <div class="ui-g-8">
-        <div class="detail-block">
-            <div class="input-block no-append">
-                <div class="ui-float-label">
-                    <input pInputText class="append" type="text" value="Nguyễn Văn A"
-                           id="name">
-                    <label for="name">Tên</label>
+        <div class="ui-g no-padding">
+            <div class="ui-g-12">
+                <div class="detail-block">
+                    <div class="input-block no-append">
+                        <div class="ui-float-label">
+                            <input pInputText class="append" type="text" value="Nguyễn Văn A"
+                                   id="name">
+                            <label for="name">Tên</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="input-block no-append no-border">
-            <p-dropdown [options]="sexs"></p-dropdown>
-        </div>
-        <div class="detail-block">
-            <div class="input-block no-append">
-                <div class="ui-float-label">
-                    <p-calendar id="birthday"></p-calendar>
-                    <label for="birthday">Ngày sinh</label>
+            <div class="ui-g-6">
+                <div class="input-block no-append no-border">
+                    <div class="ui-float-label">
+                        <p-dropdown id="sex" [options]="sexs" [(ngModel)]="sexSelected"></p-dropdown>
+                        <label for="sex">Tên</label>
+                    </div>
+
                 </div>
             </div>
-        </div>
-        <div class="detail-block">
-            <div class="input-block no-append">
-                <div class="ui-float-label">
-                    <input pInputText class="append" type="text" value="0909090909"
-                           id="phone">
-                    <label for="phone">SĐT</label>
+            <div class="ui-g-6">
+                <div class="detail-block">
+                    <div class="input-block no-append">
+                        <div class="ui-float-label">
+                            <p-calendar id="birthday" appendTo="body"></p-calendar>
+                            <label for="birthday">Ngày sinh</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="detail-block">
-            <div class="input-block no-append">
-                <div class="ui-float-label">
-                    <input pInputText class="append" type="text" value="Sinh viên"
-                           id="job">
-                    <label for="job">Nghề nghiệp</label>
+            <div class="ui-g-6">
+                <div class="detail-block">
+                    <div class="input-block no-append">
+                        <div class="ui-float-label">
+                            <input pInputText class="append" type="text" value="0909090909"
+                                   id="phone">
+                            <label for="phone">SĐT</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="detail-block">
-            <div class="input-block no-append">
-                <div class="ui-float-label">
-                    <input pInputText class="append" type="text" value="230230230"
-                           id="identityNumber">
-                    <label for="identityNumber">Số CMND</label>
+            <div class="ui-g-6">
+                <div class="detail-block">
+                    <div class="input-block no-append">
+                        <div class="ui-float-label">
+                            <input pInputText class="append" type="text" value="Sinh viên"
+                                   id="job">
+                            <label for="job">Nghề nghiệp</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="detail-block">
-            <div class="input-block no-append">
-                <div class="ui-float-label">
-                    <p-calendar id="identityDate"></p-calendar>
-                    <label for="identityDate">Ngày cấp</label>
+            <div class="ui-g-6">
+                <div class="detail-block">
+                    <div class="input-block no-append">
+                        <div class="ui-float-label">
+                            <input pInputText class="append" type="text" value="230230230"
+                                   id="identityNumber">
+                            <label for="identityNumber">Số CMND</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="detail-block">
-            <div class="input-block no-append">
-                <div class="ui-float-label">
-                    <input pInputText class="append" type="text" value="TPHCM"
-                           id="identityPlace">
-                    <label for="identityPlace">Nơi cấp</label>
+            <div class="ui-g-6">
+                <div class="detail-block">
+                    <div class="input-block no-append">
+                        <div class="ui-float-label">
+                            <p-calendar id="identityDate" appendTo="body"></p-calendar>
+                            <label for="identityDate">Ngày cấp</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="detail-block">
-            <div class="input-block no-append">
-                <div class="ui-float-label">
-                    <input pInputText class="append" type="text" value="thẻ căn cước"
-                           id="identityType">
-                    <label for="identityType">Loại thẻ</label>
+            <div class="ui-g-6">
+                <div class="detail-block">
+                    <div class="input-block no-append">
+                        <div class="ui-float-label">
+                            <input pInputText class="append" type="text" value="TPHCM"
+                                   id="identityPlace">
+                            <label for="identityPlace">Nơi cấp</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="detail-block">
-            <div class="input-block no-append">
-                <div class="ui-float-label">
-                    <input pInputText class="append" type="text" value="đen"
-                           id="note">
-                    <label for="note">Ghi chú</label>
+            <div class="ui-g-6">
+                <div class="detail-block">
+                    <div class="input-block no-append">
+                        <div class="ui-float-label">
+                            <input pInputText class="append" type="text" value="thẻ căn cước"
+                                   id="identityType">
+                            <label for="identityType">Loại thẻ</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="detail-block">
+                    <div class="input-block no-append">
+                        <div class="ui-float-label">
+                            <input pInputText class="append" type="text" value="đen"
+                                   id="note">
+                            <label for="note">Ghi chú</label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

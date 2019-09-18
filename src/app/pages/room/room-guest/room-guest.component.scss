@@ -7,4 +7,19 @@
   .ui-dropdown {
     width: 100%;
   }
+  .img-block > div > img {
+    height: auto!important;
+  }
+  .no-padding [class^="ui-"] {
+    padding: 0;
+  }
+  .input-block.no-border {
+    .ui-dropdown {
+      padding-bottom: 2px;
+      border-bottom: 1px solid #c8c8c8;
+    }
+  }
+  .detail-block {
+    padding: 0 5px;
+  }
 }
