@@ -336,16 +336,29 @@ export class Calendar implements OnInit,OnDestroy,ControlValueAccessor {
     
     @ContentChildren(PrimeTemplate) templates: QueryList<any>;
     
+    // _locale: LocaleSettings = {
+    //     firstDayOfWeek: 0,
+    //     dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    //     dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    //     dayNamesMin: ["Su","Mo","Tu","We","Th","Fr","Sa"],
+    //     monthNames: [ "January","February","March","April","May","June","July","August","September","October","November","December" ],
+    //     monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
+    //     today: 'Today',
+    //     clear: 'Clear',
+    //     dateFormat: 'mm/dd/yy',
+    //     weekHeader: 'Wk'
+    // };
     _locale: LocaleSettings = {
         firstDayOfWeek: 0,
-        dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-        dayNamesMin: ["Su","Mo","Tu","We","Th","Fr","Sa"],
-        monthNames: [ "January","February","March","April","May","June","July","August","September","October","November","December" ],
-        monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
+        dayNames: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'],
+        dayNamesShort: ['CNhật', 'THai', 'TBa', 'TTư', 'TNăm', 'TSáu', 'TBảy'],
+        dayNamesMin: ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy'],
+        monthNames: ['Tháng Một', 'Tháng Hai', 'Tháng Ba', 'Tháng Tư', 'Tháng Năm', 'Tháng Sáu', 'Tháng Bảy', 'Tháng Tám',
+            'Tháng Chín', 'Tháng Mười', 'Tháng Mười Một', 'Tháng Mười Hai'],
+        monthNamesShort: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
         today: 'Today',
         clear: 'Clear',
-        dateFormat: 'mm/dd/yy',
+        dateFormat: 'dd/mm/yy',
         weekHeader: 'Wk'
     };
     
