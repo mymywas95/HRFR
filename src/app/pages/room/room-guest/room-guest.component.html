@@ -117,93 +117,15 @@
                 <ng-template pTemplate="body" let-rowData let-index="rowIndex" let-data="rowData">
                     <tr [pSelectableRow]="rowData">
                         <td class="text-center">{{index + 1}}</td>
-                        <td [pEditableColumn]="rowData" [pEditableColumnField]="'name'"
-                            [title]="rowData['name']">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="rowData['name']">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData['name']}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                        <td [pEditableColumn]="rowData" [pEditableColumnField]="'sex'"
-                            [title]="rowData['sex']">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="rowData['sex']">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData['sex']}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                        <td [pEditableColumn]="rowData" pEditableColumnField="birthday"
-                            [title]="rowData['birthday']">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <p-calendar appendTo="body" [(ngModel)]="rowData['birthday']"></p-calendar>
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData['birthday'] | date: 'dd/MM/yyyy'}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                        <td [pEditableColumn]="rowData" pEditableColumnField="phone" [title]="rowData['phone']">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="rowData['phone']">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData['phone']}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                        <td [pEditableColumn]="rowData" [pEditableColumnField]="'job'"
-                            [title]="rowData['job']">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="rowData['job']">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData['job']}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                        <td [pEditableColumn]="rowData" pEditableColumnField="identityNumber"
-                            [title]="rowData['identityNumber']">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="rowData['identityNumber']">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData['identityNumber']}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                        <td [pEditableColumn]="rowData" pEditableColumnField="date"
-                            [title]="rowData['date']">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <p-calendar appendTo="body" [(ngModel)]="rowData['date']"></p-calendar>
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData['date'] | date: 'dd/MM/yyyy'}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                        <td [pEditableColumn]="rowData" [pEditableColumnField]="'household'"
-                            [title]="rowData['household']">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="rowData['household']">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData['household']}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
+                        <td [title]="rowData['name']">{{rowData['name']}}</td>
+                        <td [title]="rowData['sex']">{{rowData['sex']}}</td>
+                        <td [title]="rowData['birthday' | date: 'dd/MM/yyyy']">{{rowData['birthday'] | date: 'dd/MM/yyyy'}}</td>
+                        <td [title]="rowData['phone']">{{rowData['phone']}}</td>
+                        <td [title]="rowData['job']">{{rowData['job']}}</td>
+                        <td [title]="rowData['identityNumber']">{{rowData['identityNumber']}}</td>
+                        <td [title]="rowData['identityDate'] | date: 'dd/MM/yyyy'">{{rowData['identityDate'] | date: 'dd/MM/yyyy'}}</td>
+                        <td [title]="rowData['identityProvide']">{{rowData['identityProvide']}}</td>
+                        <td [title]="rowData['note']">{{rowData['note']}}</td>
                         <td class="text-center">
                             <div class="table-button">
                                 <button pButton icon="fa fa-trash" type="button" (click)="deleteGuest(rowData)"

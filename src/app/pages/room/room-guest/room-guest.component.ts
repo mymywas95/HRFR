@@ -38,8 +38,9 @@ export class RoomGuestComponent implements OnInit {
             {field: 'phone', header: 'SĐT'},
             {field: 'job', header: 'Nghề nghiệp'},
             {field: 'identityNumber', header: 'CMND'},
-            {field: 'date', header: 'Ngày cấp'},
-            {field: 'household', header: 'Hộ khẩu'},
+            {field: 'identityDate', header: 'Ngày cấp'},
+            {field: 'identityProvide', header: 'Nơi cấp'},
+            {field: 'note', header: 'Ghi chú'},
         ];
         this.guestList = [
             {
@@ -50,8 +51,9 @@ export class RoomGuestComponent implements OnInit {
                 phone: '090909090909',
                 job: 'sinh viên',
                 identityNumber: '123123123',
-                date: new Date('2012/07/07'),
-                household: 'Cà màu'
+                identityDate: new Date('2012/07/07'),
+                identityProvide: 'Cà màu',
+                note: 'đen'
             },
             {
                 id: 2,
@@ -61,8 +63,9 @@ export class RoomGuestComponent implements OnInit {
                 phone: '090909090909',
                 job: 'sinh viên',
                 identityNumber: '123123123',
-                date: new Date('2012/07/07'),
-                household: 'Cà màu'
+                identityDate: new Date('2012/07/07'),
+                identityProvide: 'Cà màu',
+                note: 'đen'
             },
             {
                 id: 3,
@@ -72,8 +75,9 @@ export class RoomGuestComponent implements OnInit {
                 phone: '090909090909',
                 job: 'sinh viên',
                 identityNumber: '123123123',
-                date: new Date('2012/07/07'),
-                household: 'Cà màu'
+                identityDate: new Date('2012/07/07'),
+                identityProvide: 'Cà màu',
+                note: 'đen'
             },
 
         ];
