@@ -12,6 +12,7 @@ import {RoomDetailComponent} from './room-detail/room-detail.component';
 import {RoomService} from './services/room.service';
 import {RoomGuestNewComponent} from './room-guest-new/room-guest-new.component';
 import {RoomDeviceNewComponent} from './room-device-new/room-device-new.component';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'was-room',
@@ -51,6 +52,7 @@ export class RoomComponent implements OnInit, AfterViewInit {
     constructor(private languageHelperService: LanguageHelperService,
                 private confirmDialogCustomService: ConfirmDialogCustomService,
                 private eventManagerService: EventManagerService,
+                private router: Router,
                 private roomService: RoomService) {
     }
 
@@ -89,6 +91,7 @@ export class RoomComponent implements OnInit, AfterViewInit {
         }
         const path = parentName !== '' ? parentName  + ' - ' + midName : midName;
         this.header = path;
+        this.changeDetail('room');
     }
 
     back() {
@@ -96,7 +99,6 @@ export class RoomComponent implements OnInit, AfterViewInit {
     }
 
     changeDetail(option) {
-        this.showDetail(false);
         const type = this.roomTypeSelected;
         const room = this.roomSelected;
         const listRoom = [];
@@ -189,7 +191,6 @@ export class RoomComponent implements OnInit, AfterViewInit {
             this.showToast(data);
         } else {
             const arrString = [name, name];
-            this.showDetail(true);
             this.showConfirmOk({
                 messageId: 'create_guest_confirm',
                 arrayStringValue: arrString,
@@ -328,12 +329,6 @@ export class RoomComponent implements OnInit, AfterViewInit {
             arrayStringValue: arrayValue,
         };
         this.showToast(data);
-    }
-
-    showDetail(data) {
-        this.isDetail = data;
-        // this.roomItemComponent.display = !data;
-        // this.roomDetailComponent.display = data;
     }
 
     showConfirmOk(value) {

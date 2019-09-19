@@ -7,8 +7,13 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class RoomDeviceComponent implements OnInit {
     deviceList: any[];
+    deviceBackList: any[];
+    deviceAttackedList: any[];
     deviceSelected;
+    deviceBackSelected;
+    deviceAttackedSelected;
     cols;
+    colsAttached;
     display;
     images;
     @Output() createDeviceEvent = new EventEmitter<any>();
@@ -30,27 +35,71 @@ export class RoomDeviceComponent implements OnInit {
     initGuestData() {
         this.cols = [
             {field: 'name', header: 'Tên'},
-            {field: 'image', header: 'hình ảnh'},
+            {field: 'image', header: 'Hình ảnh'},
+            {field: 'description', header: 'Mô tả'},
+            {field: 'quantity', header: 'Số lượng'},
+            {field: 'price', header: 'Giá bồi thường'},
+            {field: 'date', header: 'Ngày giao'},
             {field: 'status', header: 'Trạng thái'},
-            {field: 'description', header: 'Mô tả'}
+
         ];
-        this.deviceList = [
+        this.colsAttached = [
+            {field: 'name', header: 'Tên'},
+            {field: 'image', header: 'Hình ảnh'},
+            {field: 'location', header: 'Vị trí gắn'},
+            {field: 'description', header: 'Mô tả'},
+            {field: 'quantity', header: 'Số lượng'},
+            {field: 'attackedDate', header: 'Ngày gắn'},
+            {field: 'status', header: 'Trạng thái'},
+        ];
+        this.deviceAttackedList = [
             {
                 id: 1,
                 name: 'Máy lạnh',
                 image: 'http://primefaces.org/primeng/assets/showcase/images/demo/galleria/galleria7.jpg',
-                status: 'Đang sử dụng',
-                description: 'màu trắng'
+                location: 'Tầng 1',
+                description: 'màu trắng',
+                quantity: 1,
+                price: '1,000,000VND',
+                attackedDate: '07/07/2018',
+                status: 'Đang sử dụng'
             },
             {
                 id: 2,
                 name: 'Máy lạnh',
                 image: 'http://primefaces.org/primeng/assets/showcase/images/demo/galleria/galleria7.jpg',
+                location: 'Tầng 1',
+                description: 'màu trắng',
+                quantity: 1,
+                price: '1,000,000VND',
+                attackedDate: '07/07/2018',
+                status: 'Đang sử dụng'
+            }
+        ]
+        this.deviceList = [
+            {
+                id: 1,
+                name: 'Máy lạnh',
+                image: 'http://primefaces.org/primeng/assets/showcase/images/demo/galleria/galleria7.jpg',
+                description: 'màu trắng',
+                quantity: 1,
+                price: '1,000,000VND',
+                date: '07/07/2018',
                 status: 'Đang sử dụng',
-                description: 'màu trắng'
             },
+            {
+                id: 2,
+                name: 'Máy lạnh',
+                image: 'http://primefaces.org/primeng/assets/showcase/images/demo/galleria/galleria7.jpg',
+                description: 'màu trắng',
+                quantity: 1,
+                price: '1,000,000VND',
+                date: '07/07/2018',
+                status: 'Đang sử dụng',
+            }
         ];
         this.deviceSelected = this.deviceList[0];
+        this.deviceBackList = this.deviceList;
     }
 
     showImage() {

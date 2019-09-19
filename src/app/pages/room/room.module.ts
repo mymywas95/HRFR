@@ -28,6 +28,7 @@ import { RoomGuestComponent } from './room-guest/room-guest.component';
 import {FileUploadModule} from '../../ui-common/fileupload/fileupload';
 import {AccordionModule} from '../../ui-common/accordion/accordion';
 import { RoomPaymentHistoryComponent } from './room-payment-history/room-payment-history.component';
+import { RoomServiceComponent } from './room-service/room-service.component';
 
 @NgModule({
     declarations: [
@@ -40,7 +41,8 @@ import { RoomPaymentHistoryComponent } from './room-payment-history/room-payment
         RoomDeviceNewComponent,
         RoomHistoryComponent,
         RoomGuestComponent,
-        RoomPaymentHistoryComponent
+        RoomPaymentHistoryComponent,
+        RoomServiceComponent
     ],
     imports: [
         CommonModule,

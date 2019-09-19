@@ -1,90 +1,138 @@
+<!--<div class="ui-g">-->
+<!--    <div class="ui-g-12 ui-md-8 ui-lg-9">-->
+<!--        <div class="card card-w-title">-->
+<!--            <div class="ui-g">-->
+<!--                <div class="ui-g-12 ui-md-6 ui-lg-6">-->
+<!--                    <h1>Thông tin dịch vụ</h1>-->
+<!--                </div>-->
+<!--                <div class="ui-g-12 ui-md-6 ui-lg-6 text-right">-->
+<!--                    <button pButton label="Thên dịch vụ" (click)="createGuest()"></button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="ui-g form-group">-->
+<!--                <div class="ui-g-12">-->
+<!--                    <p-table [value]="services" [scrollable]="true" scrollHeight="15.8vh" selectionMode="single"-->
+<!--                             dataKey="id" [(selection)]="serviceSelected"-->
+<!--                             (onEditComplete)="onEditComplete($event)"-->
+<!--                             (onRowSelect)="onRowSelect($event)">-->
+<!--                        <ng-template pTemplate="header">-->
+<!--                            <tr>-->
+<!--                                <th class="ng-star-inserted">STT</th>-->
+<!--                                <th *ngFor="let col of serviceCols">-->
+<!--                                    {{col.header}}-->
+<!--                                </th>-->
+<!--                                <th class="ng-star-inserted">Thao tác</th>-->
+<!--                            </tr>-->
+<!--                        </ng-template>-->
+<!--                        <ng-template pTemplate="body" let-rowData let-index="rowIndex" let-data="rowData">-->
+<!--                            <tr [pSelectableRow]="rowData">-->
+<!--                                <td class="text-center">{{index + 1}}</td>-->
+<!--                                <td class="text-center" [title]="rowData['label']">{{rowData['label']}}</td>-->
+<!--                                <td class="text-center" [title]="rowData['note']">{{rowData['note']}}</td>-->
+<!--                                <td class="text-center" [title]="rowData['unit']">{{rowData['unit']}}</td>-->
+<!--                                <td class="text-center" [title]="rowData['amount']">{{rowData['amount']}}</td>-->
+<!--                                <td class="text-center" [title]="rowData['value']">{{rowData['value']}}</td>-->
+<!--                                <td class="text-center" [title]="calculateTotalPrice(rowData)">{{calculateTotalPrice(rowData)}}</td>-->
+<!--                                <td class="text-center">-->
+<!--                                    <div class="table-button">-->
+<!--                                        <button pButton icon="fa fa-trash" type="button"-->
+<!--                                                (click)="deleteGuest(rowData)"-->
+<!--                                                class="ui-button-danger"></button>-->
+<!--                                    </div>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                        </ng-template>-->
+<!--                    </p-table>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="ui-g-12 ui-md-4 ui-lg-3">-->
+<!--        <div class="card card-w-title">-->
+<!--            <h1>Thông tin phòng</h1>-->
+<!--            <div class="ui-g form-group">-->
+<!--                <div class="ui-g-12 ui-md-12 ui-lg-12">-->
+<!--                    <div class="input-block no-append">-->
+<!--                        <div class="ui-float-label">-->
+<!--                            <input pInputText class="append" type="text" [(ngModel)]="room.name"-->
+<!--                                   id="name"-->
+<!--                                   (change)="update('acreage', 'Diện tích', $event.target.value)">-->
+<!--                            <label for="name">Tên</label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="input-block">-->
+<!--                        <div class="ui-float-label">-->
+<!--                            <input pInputText class="append" type="number" [(ngModel)]="room.acreage"-->
+<!--                                   id="acreage"-->
+<!--                                   (change)="update('acreage', 'Diện tích', $event.target.value)">-->
+<!--                            <label for="acreage">Diện tích</label>-->
+<!--                            <span class="input-block-append">m2</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="input-block no-append">-->
+<!--                        <div class="ui-float-label">-->
+<!--                            <input pInputText class="append" type="text" [ngModel]="room.dateCollection"-->
+<!--                                   id="date" readonly>-->
+<!--                            <label for="date">Ngày đến hạn thu</label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="input-block">-->
+<!--                        <div class="ui-float-label">-->
+<!--                            <input pInputText class="append" type="text" [ngModel]="room.totalPrice"-->
+<!--                                   id="total" readonly>-->
+<!--                            <label for="total">Tổng tiền dịch vụ</label>-->
+<!--                            <span class="input-block-append">,000VND</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
 <div class="ui-g">
-    <div class="ui-g-12 ui-md-8 ui-lg-9">
-        <div class="card card-w-title">
-            <div class="ui-g">
-                <div class="ui-g-12 ui-md-6 ui-lg-6">
-                    <h1>Thông tin dịch vụ</h1>
-                </div>
-                <div class="ui-g-12 ui-md-6 ui-lg-6 text-right">
-                    <button pButton label="Thên dịch vụ" (click)="createGuest()"></button>
-                </div>
-            </div>
-            <div class="ui-g form-group">
-                <div class="ui-g-12">
-                    <p-table [value]="services" [scrollable]="true" scrollHeight="15.8vh" selectionMode="single"
-                             dataKey="id" [(selection)]="serviceSelected"
-                             (onEditComplete)="onEditComplete($event)"
-                             (onRowSelect)="onRowSelect($event)">
-                        <ng-template pTemplate="header">
-                            <tr>
-                                <th class="ng-star-inserted">STT</th>
-                                <th *ngFor="let col of serviceCols">
-                                    {{col.header}}
-                                </th>
-                                <th class="ng-star-inserted">Thao tác</th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-rowData let-index="rowIndex" let-data="rowData">
-                            <tr [pSelectableRow]="rowData">
-                                <td class="text-center">{{index + 1}}</td>
-                                <td class="text-center" [title]="rowData['label']">{{rowData['label']}}</td>
-                                <td class="text-center" [title]="rowData['note']">{{rowData['note']}}</td>
-                                <td class="text-center" [title]="rowData['unit']">{{rowData['unit']}}</td>
-                                <td class="text-center" [title]="rowData['amount']">{{rowData['amount']}}</td>
-                                <td class="text-center" [title]="rowData['value']">{{rowData['value']}}</td>
-                                <td class="text-center" [title]="calculateTotalPrice(rowData)">{{calculateTotalPrice(rowData)}}</td>
-                                <td class="text-center">
-                                    <div class="table-button">
-                                        <button pButton icon="fa fa-trash" type="button"
-                                                (click)="deleteGuest(rowData)"
-                                                class="ui-button-danger"></button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </ng-template>
-                    </p-table>
-                </div>
+    <div class="ui-g-12 ui-md-4 ui-lg-3">
+        <div class="room-img-block">
+            <div class="img-item">
+                <img src="../../../../assets/showcase/images/house.jpg">
             </div>
         </div>
     </div>
-    <div class="ui-g-12 ui-md-4 ui-lg-3">
-        <div class="card card-w-title">
-            <h1>Thông tin phòng</h1>
-            <div class="ui-g form-group">
-                <div class="ui-g-12 ui-md-12 ui-lg-12">
-                    <div class="input-block no-append">
-                        <div class="ui-float-label">
-                            <input pInputText class="append" type="text" [(ngModel)]="room.name"
-                                   id="name"
-                                   (change)="update('acreage', 'Diện tích', $event.target.value)">
-                            <label for="name">Tên</label>
-                        </div>
-                    </div>
-                    <div class="input-block">
-                        <div class="ui-float-label">
-                            <input pInputText class="append" type="number" [(ngModel)]="room.acreage"
-                                   id="acreage"
-                                   (change)="update('acreage', 'Diện tích', $event.target.value)">
-                            <label for="acreage">Diện tích</label>
-                            <span class="input-block-append">m2</span>
-                        </div>
-                    </div>
-                    <div class="input-block no-append">
-                        <div class="ui-float-label">
-                            <input pInputText class="append" type="text" [ngModel]="room.dateCollection"
-                                   id="date" readonly>
-                            <label for="date">Ngày đến hạn thu</label>
-                        </div>
-                    </div>
-                    <div class="input-block">
-                        <div class="ui-float-label">
-                            <input pInputText class="append" type="text" [ngModel]="room.totalPrice"
-                                   id="total" readonly>
-                            <label for="total">Tổng tiền dịch vụ</label>
-                            <span class="input-block-append">,000VND</span>
-                        </div>
-                    </div>
-                </div>
+    <div class="ui-g-12 ui-md-8 ui-lg-9">
+        <div class="input-block">
+            <div class="ui-float-label no-append">
+                <input pInputText class="append" type="text" value="phòng số 1" id="name"
+                       (change)="update('name', 'Tên', $event.target.value)">
+                <label for="address">Tên</label>
+            </div>
+        </div>
+        <div class="input-block">
+            <div class="ui-float-label no-append">
+                <input pInputText class="append" type="text" value="vườn lai" id="address"
+                       (change)="update('address', 'Địa chỉ', $event.target.value)">
+                <label for="address">Địa chỉ</label>
+            </div>
+        </div>
+        <div class="input-block">
+            <div class="ui-float-label no-append">
+                <input pInputText class="append" type="text" value="3214" id="landNumber"
+                       (change)="update('roomPrice', 'Thửa đất số', $event.target.value)">
+                <label for="landNumber">Thửa đất số</label>
+            </div>
+        </div>
+        <div class="input-block">
+            <div class="ui-float-label no-append">
+                <input pInputText class="append" type="text" value="34234" id="mapNumber"
+                       (change)="update('mapNumber', 'Bản đồ số', $event.target.value)">
+                <label for="mapNumber">Bản đồ số</label>
+            </div>
+        </div>
+        <div class="input-block">
+            <div class="ui-float-label">
+                <input pInputText class="append" type="number" value="48" id="acreage"
+                       (change)="update('acreage', 'Diện tích', $event.target.value)">
+                <label for="acreage">Diện tích</label>
+                <span class="input-block-append">m2</span>
             </div>
         </div>
     </div>
