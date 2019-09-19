@@ -87,6 +87,7 @@
                         <ng-template pTemplate="body" let-rowData let-index="rowIndex" let-data="rowData">
                             <tr [pSelectableRow]="rowData">
                                 <td class="text-center">{{index + 1}}</td>
+                                <td [title]="rowData['transactionNumber']">{{rowData['transactionNumber']}}</td>
                                 <td [title]="rowData['type']">{{rowData['type']}}</td>
                                 <td [title]="rowData['transactionType']">{{rowData['transactionType']}}</td>
                                 <td [title]="rowData['money'] | number:'1.0-0'">{{rowData['money'] | number:'1.0-0'}}</td>

@@ -34,6 +34,7 @@ export class RoomPaymentHistoryComponent implements OnInit {
 
     initData() {
         this.cols = [
+            {field: 'transactionNumber', header: 'Mã giao dịch'},
             {field: 'type', header: 'Loại dịch vụ'},
             {field: 'transactionType', header: 'Hình thức giao dịch'},
             {field: 'money', header: 'Số tiền cần thành toán'},
@@ -45,6 +46,7 @@ export class RoomPaymentHistoryComponent implements OnInit {
         this.historyList = [
             {
                 id: 1,
+                transactionNumber: '24342424',
                 type: 'Tiền phòng',
                 transactionType: 'Thanh toán tiền mặt',
                 money: '2000000',
